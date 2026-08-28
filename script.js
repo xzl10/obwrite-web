@@ -12,23 +12,21 @@ const i18nData = {
         nav_solutions: "3つの喪失",
         nav_platforms: "対応サイト",
         nav_pricing: "価格",
-        nav_buy_gumroad: "Gumroadで購入",
-        nav_download: "無料ダウンロード",
+        nav_buy_gumroad: "ライセンスを購入 ($29)",
 
         // Hero
         badge_text: "Obwrite 3.1.0 — Web to Obsidian Pipeline",
         hero_title: 'Webのすべてを、<br><span class="text-gradient">Obsidian へ直接・恒久保存。</span>',
         hero_subtitle: "X.com のポスト、メルカリ・Yahoo!フリマの出品、Reddit や Civitai の投稿をワンクリックで抽出。<br>画像・動画もローカル Vault に一括保存し、データの消滅と散逸を永遠に防ぎます。",
-        hero_cta_download: "Windows版を無料ダウンロード",
         hero_cta_buy: "ライセンスを購入 ($29)",
-        hero_meta_1: "✓ Windows 10 / 11 (64bit) 対応",
+        hero_meta_1: "✓ Windows 10 / 11 (64bit) ネイティブ",
         hero_meta_2: "✓ 完全ローカル動作（外部送信ゼロ）",
-        hero_meta_3: "✓ 登録不要・即日利用可能",
+        hero_meta_3: "✓ 買い切り・永久アップデート対応",
 
         // Showcase
         showcase_title: "Obwrite — Active Focus Pipeline",
-        tag_web_ingress: "Web Ingress (ブラウザ直接フック)",
-        tag_caption: "Chrome拡張連携による高速キャプチャ",
+        tag_web_ingress: "Web Ingress (ブラウザ直接接続)",
+        tag_caption: "スタンドアロン高速 CDP パイプライン",
         tag_arrow_badge: "1-Click Local Extraction",
         tag_vault: "Obsidian Vault",
         tree_text: "(本文 + 埋込)",
@@ -79,11 +77,6 @@ const i18nData = {
         f_6: "✓ 永久アップデート ＆ オフライン完全対応",
         pricing_btn: "Gumroad でライセンスを購入 ($29)",
 
-        // Download
-        dl_title: "無料プレビュー版をお試しください",
-        dl_desc: "まずは手元の環境で高速な抽出体験をご確認いただけます。",
-        dl_btn: "Obwrite.exe (Windows 64bit) をダウンロード",
-
         // Footer
         footer_brand_sub: "The Ultimate Local Web-to-Obsidian Pipeline.",
         footer_copy: "© 2026 Obwrite. All rights reserved. Designed for Obsidian Power Users."
@@ -97,23 +90,21 @@ const i18nData = {
         nav_solutions: "3 Losses Solved",
         nav_platforms: "Platforms",
         nav_pricing: "Pricing",
-        nav_buy_gumroad: "Buy on Gumroad",
-        nav_download: "Free Download",
+        nav_buy_gumroad: "Buy License ($29)",
 
         // Hero
         badge_text: "Obwrite 3.1.0 — Web to Obsidian Pipeline",
         hero_title: 'Capture the Web directly into<br><span class="text-gradient">Obsidian. Without Limits.</span>',
         hero_subtitle: "Extract posts, high-res images, and videos from X.com, Mercari, Yahoo! Fleamarket, Reddit, and Civitai with 1 click.<br>Saved straight to your local Vault. Prevent digital decay and scattered files forever.",
-        hero_cta_download: "Download for Windows (Free)",
         hero_cta_buy: "Buy Lifetime License ($29)",
         hero_meta_1: "✓ Windows 10 / 11 (64-bit) Native",
         hero_meta_2: "✓ 100% Local (Zero External Cloud)",
-        hero_meta_3: "✓ No Account Required. Instant Setup",
+        hero_meta_3: "✓ One-Time Purchase. Lifetime Updates",
 
         // Showcase
         showcase_title: "Obwrite — Active Focus Pipeline",
-        tag_web_ingress: "Web Ingress (Direct Browser Hook)",
-        tag_caption: "Direct CDP pipeline via Chrome extension",
+        tag_web_ingress: "Web Ingress (Direct Browser Attach)",
+        tag_caption: "Standalone high-speed CDP pipeline",
         tag_arrow_badge: "1-Click Local Extraction",
         tag_vault: "Obsidian Vault",
         tree_text: "(Body + Embedded)",
@@ -163,11 +154,6 @@ const i18nData = {
         f_5: "✓ Commercial and personal use license",
         f_6: "✓ Lifetime updates & 100% offline functionality",
         pricing_btn: "Buy Lifetime License on Gumroad ($29)",
-
-        // Download
-        dl_title: "Try the Free Preview Edition",
-        dl_desc: "Experience the lightning-fast web extraction pipeline on your own machine today.",
-        dl_btn: "Download Obwrite.exe (Windows 64-bit)",
 
         // Footer
         footer_brand_sub: "The Ultimate Local Web-to-Obsidian Pipeline.",
