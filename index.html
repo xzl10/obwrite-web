@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <!-- Ambient Background Glows -->
@@ -41,15 +42,22 @@
             </a>
 
             <nav class="nav-links">
-                <a href="#features">機能</a>
-                <a href="#solutions">3つの喪失</a>
-                <a href="#platforms">対応サイト</a>
-                <a href="#pricing">価格</a>
+                <a href="#features" data-i18n="nav_features">機能</a>
+                <a href="#solutions" data-i18n="nav_solutions">3つの喪失</a>
+                <a href="#platforms" data-i18n="nav_platforms">対応サイト</a>
+                <a href="#pricing" data-i18n="nav_pricing">価格</a>
             </nav>
 
             <div class="nav-actions">
-                <a href="https://obwrite.gumroad.com/" class="btn btn-secondary btn-sm" target="_blank">Gumroadで購入</a>
-                <a href="#download" class="btn btn-primary btn-sm">無料ダウンロード</a>
+                <!-- Language Toggle Switch (SPA) -->
+                <div class="lang-switch-container">
+                    <button class="lang-btn active" data-lang="ja">🇯🇵 JP</button>
+                    <span class="lang-divider">/</span>
+                    <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+                </div>
+
+                <a href="https://obwrite.gumroad.com/" class="btn btn-secondary btn-sm" target="_blank" data-i18n="nav_buy_gumroad">Gumroadで購入</a>
+                <a href="#download" class="btn btn-primary btn-sm" data-i18n="nav_download">無料ダウンロード</a>
             </div>
         </div>
     </header>
@@ -60,16 +68,16 @@
             <div class="badge-container">
                 <span class="badge-pill">
                     <span class="badge-dot"></span>
-                    Obwrite 3.1.0 — Web to Obsidian Pipeline
+                    <span data-i18n="badge_text">Obwrite 3.1.0 — Web to Obsidian Pipeline</span>
                 </span>
             </div>
 
-            <h1 class="hero-title">
+            <h1 class="hero-title" data-i18n-html="hero_title">
                 Webのすべてを、<br>
                 <span class="text-gradient">Obsidian へ直接・恒久保存。</span>
             </h1>
 
-            <p class="hero-subtitle">
+            <p class="hero-subtitle" data-i18n-html="hero_subtitle">
                 X.com のポスト、メルカリ・Yahoo!フリマの出品、Reddit や Civitai の投稿をワンクリックで抽出。<br>
                 画像・動画もローカル Vault に一括保存し、データの消滅と散逸を永遠に防ぎます。
             </p>
@@ -79,17 +87,17 @@
                     <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                     </svg>
-                    Windows版を無料ダウンロード
+                    <span data-i18n="hero_cta_download">Windows版を無料ダウンロード</span>
                 </a>
-                <a href="https://obwrite.gumroad.com/" class="btn btn-secondary btn-lg" target="_blank">
+                <a href="https://obwrite.gumroad.com/" class="btn btn-secondary btn-lg" target="_blank" data-i18n="hero_cta_buy">
                     ライセンスを購入 ($29)
                 </a>
             </div>
 
             <div class="hero-meta">
-                <span>✓ Windows 10 / 11 (64bit) 対応</span>
-                <span>✓ 完全ローカル動作（外部送信ゼロ）</span>
-                <span>✓ 登録不要・即日利用可能</span>
+                <span data-i18n="hero_meta_1">✓ Windows 10 / 11 (64bit) 対応</span>
+                <span data-i18n="hero_meta_2">✓ 完全ローカル動作（外部送信ゼロ）</span>
+                <span data-i18n="hero_meta_3">✓ 登録不要・即日利用可能</span>
             </div>
 
             <!-- Hero Showcase Graphic -->
@@ -101,12 +109,12 @@
                             <span class="dot yellow"></span>
                             <span class="dot green"></span>
                         </div>
-                        <div class="window-title">Obwrite — Active Focus Pipeline</div>
+                        <div class="window-title" data-i18n="showcase_title">Obwrite — Active Focus Pipeline</div>
                     </div>
                     <div class="showcase-body">
                         <div class="pipeline-grid">
                             <div class="pipeline-source">
-                                <div class="card-tag">Web Ingress</div>
+                                <div class="card-tag" data-i18n="tag_web_ingress">Web Ingress (ブラウザ直接フック)</div>
                                 <div class="platform-chips">
                                     <span class="chip">𝕏 x.com</span>
                                     <span class="chip">🔴 メルカリ</span>
@@ -114,19 +122,19 @@
                                     <span class="chip">🤖 Reddit</span>
                                     <span class="chip">🎨 Civitai</span>
                                 </div>
-                                <p class="caption">Chrome拡張連携によるブラウザ直接フック</p>
+                                <p class="caption" data-i18n="tag_caption">Chrome拡張連携による高速キャプチャ</p>
                             </div>
                             <div class="pipeline-arrow">
                                 <div class="arrow-line"></div>
-                                <div class="arrow-badge">1-Click Local Extraction</div>
+                                <div class="arrow-badge" data-i18n="tag_arrow_badge">1-Click Local Extraction</div>
                             </div>
                             <div class="pipeline-target">
-                                <div class="card-tag">Obsidian Vault</div>
+                                <div class="card-tag" data-i18n="tag_vault">Obsidian Vault</div>
                                 <div class="vault-tree">
                                     <div class="tree-item folder">📁 Obwrite/</div>
                                     <div class="tree-item folder sub">📁 x.com/</div>
-                                    <div class="tree-item file sub2">📄 output.md <span>(本文+埋込)</span></div>
-                                    <div class="tree-item folder sub2">📁 media/ <span>(画像/動画自動DL)</span></div>
+                                    <div class="tree-item file sub2">📄 output.md <span data-i18n="tree_text">(本文+埋込)</span></div>
+                                    <div class="tree-item folder sub2">📁 media/ <span data-i18n="tree_media">(画像/動画自動DL)</span></div>
                                 </div>
                             </div>
                         </div>
@@ -140,8 +148,8 @@
     <section id="solutions" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">Obwrite が防ぐ <span class="text-gradient">3 つの喪失</span></h2>
-                <p class="section-subtitle">ブラウザのブックマークやダウンロードフォルダの限界を超え、知識をローカルで完全防衛します。</p>
+                <h2 class="section-title" data-i18n-html="solutions_title">Obwrite が防ぐ <span class="text-gradient">3 つの喪失</span></h2>
+                <p class="section-subtitle" data-i18n="solutions_subtitle">ブラウザのブックマークやダウンロードフォルダの限界を超え、知識をローカルで完全防衛します。</p>
             </div>
 
             <div class="grid-3">
@@ -149,24 +157,24 @@
                     <div class="feature-icon-wrapper">
                         <div class="feature-icon">🛡️</div>
                     </div>
-                    <h3>【1】投稿とメディアの消滅</h3>
-                    <p>X.com のポスト、メルカリや Yahoo!フリマの商品ページは、削除・凍結・出品終了で跡形もなく消えます。Obwrite は投稿コメント・画像・動画・元URLをローカル Vault に一括保存。サイトが閉鎖してもオフラインで閲覧できます。</p>
+                    <h3 data-i18n="sol_1_title">【1】投稿とメディアの消滅</h3>
+                    <p data-i18n="sol_1_desc">X.com のポスト、メルカリや Yahoo!フリマの商品ページは、削除・凍結・出品終了で跡形もなく消えます。Obwrite は投稿コメント・画像・動画・元URLをローカル Vault に一括保存。サイトが閉鎖してもオフラインで閲覧できます。</p>
                 </div>
 
                 <div class="feature-card glass-panel">
                     <div class="feature-icon-wrapper">
                         <div class="feature-icon">📁</div>
                     </div>
-                    <h3>【2】ファイルとリンクの散逸</h3>
-                    <p>ダウンロードフォルダに山積みになった画像や動画。「誰の投稿だったか」探すのは困難です。Obwrite は Markdown ノートとメディアを自動紐付け。ドメインごとに直線的なフォルダを作成し、迷わず整理されます。</p>
+                    <h3 data-i18n="sol_2_title">【2】ファイルとリンクの散逸</h3>
+                    <p data-i18n="sol_2_desc">ダウンロードフォルダに山積みになった画像や動画。「誰の投稿だったか」探すのは困難です。Obwrite は Markdown ノートとメディアを自動紐付け。ドメインごとに直線的なフォルダを作成し、迷わず整理されます。</p>
                 </div>
 
                 <div class="feature-card glass-panel">
                     <div class="feature-icon-wrapper">
                         <div class="feature-icon">🔗</div>
                     </div>
-                    <h3>【3】リンク切れによる文脈の喪失</h3>
-                    <p>URL をメモしただけでは、数ヶ月後にアクセスしても「404 Not Found」。Obwrite はテキストと高解像度メディアをその場でローカル化。Obsidian 上の半永久的な個人データベースとして構築されます。</p>
+                    <h3 data-i18n="sol_3_title">【3】リンク切れによる文脈の喪失</h3>
+                    <p data-i18n="sol_3_desc">URL をメモしただけでは、数ヶ月後にアクセスしても「404 Not Found」。Obwrite はテキストと高解像度メディアをその場でローカル化。Obsidian 上の半永久的な個人データベースとして構築されます。</p>
                 </div>
             </div>
         </div>
@@ -176,40 +184,40 @@
     <section id="platforms" class="section-padding bg-darker">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">主要プラットフォームを <span class="text-gradient">自動検知 ＆ 最適抽出</span></h2>
-                <p class="section-subtitle">複雑な認証やレイアウト変化に耐えうる、堅牢な専用抽出エンジンを搭載。</p>
+                <h2 class="section-title" data-i18n-html="platforms_title">主要プラットフォームを <span class="text-gradient">自動検知 ＆ 最適抽出</span></h2>
+                <p class="section-subtitle" data-i18n="platforms_subtitle">複雑な認証やレイアウト変化に耐えうる、堅牢な専用抽出エンジンを搭載。</p>
             </div>
 
             <div class="platform-grid">
                 <div class="platform-card glass-panel">
                     <div class="p-icon">𝕏</div>
                     <h4>X.com (Twitter)</h4>
-                    <p>本文、画像、動画、返信ツリーをクリーンな Markdown とローカルファイルへ抽出。</p>
+                    <p data-i18n="p_x_desc">本文、画像、動画、返信ツリーをクリーンな Markdown とローカルファイルへ抽出。</p>
                 </div>
                 <div class="platform-card glass-panel">
                     <div class="p-icon" style="color: #FF0211;">●</div>
                     <h4>メルカリ (Mercari)</h4>
-                    <p>商品タイトル、価格、説明文、出品者、全商品画像を即座にノート化。</p>
+                    <p data-i18n="p_mercari_desc">商品タイトル、価格、説明文、出品者、全商品画像を即座にノート化。</p>
                 </div>
                 <div class="platform-card glass-panel">
                     <div class="p-icon" style="color: #FFE600;">★</div>
                     <h4>Yahoo!フリマ (PayPay)</h4>
-                    <p>出品終了で見れなくなる前に、画像・スペック情報を手元の Vault へアーカイブ。</p>
+                    <p data-i18n="p_yahoo_desc">出品終了で見れなくなる前に、画像・スペック情報を手元の Vault へアーカイブ。</p>
                 </div>
                 <div class="platform-card glass-panel">
                     <div class="p-icon" style="color: #FF4500;">🤖</div>
                     <h4>Reddit</h4>
-                    <p>スレッドタイトル、本文、メディア、コミュニティ情報を構造化保存。</p>
+                    <p data-i18n="p_reddit_desc">スレッドタイトル、本文、メディア、コミュニティ情報を構造化保存。</p>
                 </div>
                 <div class="platform-card glass-panel">
                     <div class="p-icon" style="color: #3B82F6;">🎨</div>
                     <h4>Civitai</h4>
-                    <p>プロンプト、モデルメタデータ、生成パラメータ、高解像度プレビューを抽出。</p>
+                    <p data-i18n="p_civitai_desc">プロンプト、モデルメタデータ、生成パラメータ、高解像度プレビューを抽出。</p>
                 </div>
                 <div class="platform-card glass-panel">
                     <div class="p-icon" style="color: #A855F7;">🌐</div>
                     <h4>汎用 Web サイト</h4>
-                    <p>タイトル、本文、OGP 画像、URL をスマートに Markdown へ整形保存。</p>
+                    <p data-i18n="p_general_desc">タイトル、本文、OGP 画像、URL をスマートに Markdown へ整形保存。</p>
                 </div>
             </div>
         </div>
@@ -219,33 +227,33 @@
     <section id="features" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">エンジニアリングがもたらす <span class="text-gradient">圧倒的な高速性と安定性</span></h2>
-                <p class="section-subtitle">Go 1.26 と Fyne GUI によるネイティブ設計。メモリ消費は極小、動作は瞬時。</p>
+                <h2 class="section-title" data-i18n-html="tech_title">エンジニアリングがもたらす <span class="text-gradient">圧倒的な高速性と安定性</span></h2>
+                <p class="section-subtitle" data-i18n="tech_subtitle">Go 1.26 と Fyne GUI によるネイティブ設計。メモリ消費は極小、動作は瞬時。</p>
             </div>
 
             <div class="grid-2">
                 <div class="tech-card glass-panel">
                     <div class="tech-badge">Linear Domain Router</div>
-                    <h3>末端ファイル名を壊さない直線ルーティング</h3>
-                    <p>ユーザーが指定したファイル名を勝手に改変しません。<code>Obwrite/x.com/output.md</code> のように、ドメインフォルダを親ディレクトリとファイル名の間に直線挿入。意図通りの整頓を実現します。</p>
+                    <h3 data-i18n="tech_1_title">末端ファイル名を壊さない直線ルーティング</h3>
+                    <p data-i18n="tech_1_desc">ユーザーが指定したファイル名を勝手に改変しません。<code>Obwrite/x.com/output.md</code> のように、ドメインフォルダを親ディレクトリとファイル名の間に直線挿入。意図通りの整頓を実現します。</p>
                 </div>
 
                 <div class="tech-card glass-panel">
                     <div class="tech-badge">Zero Jitter Control Strip</div>
-                    <h3>ワンタップで切り替える操作パネル</h3>
-                    <p>[ Write ] [ Prepend/Append ] [ DL ] [ HTML/MD ] が一直線に並ぶ快適な UI。ボタン切り替え時もレイアウトのブレ（Jitter）が物理的に発生しない精密設計。</p>
+                    <h3 data-i18n="tech_2_title">ワンタップで切り替える操作パネル</h3>
+                    <p data-i18n="tech_2_desc">[ Write ] [ Prepend/Append ] [ DL ] [ HTML/MD ] が一直線に並ぶ快適な UI。ボタン切り替え時もレイアウトのブレ（Jitter）が物理的に発生しない精密設計。</p>
                 </div>
 
                 <div class="tech-card glass-panel">
                     <div class="tech-badge">100% Offline Privacy</div>
-                    <h3>外部クラウド非依存・完全ローカル</h3>
-                    <p>あなたの Vault や保存データは外部サーバーを一切経由しません。アカウント登録も不要。完全にあなたの PC の中だけで完結する安心のセキュリティ。</p>
+                    <h3 data-i18n="tech_3_title">外部クラウド非依存・完全ローカル</h3>
+                    <p data-i18n="tech_3_desc">あなたの Vault や保存データは外部サーバーを一切経由しません。アカウント登録も不要。完全にあなたの PC の中だけで完結する安心のセキュリティ。</p>
                 </div>
 
                 <div class="tech-card glass-panel">
                     <div class="tech-badge">Native Performance</div>
-                    <h3>Go 1.26 × Fyne ネイティブバイナリ</h3>
-                    <p>重たい Electron は不採用。Go 言語でコンパイルされた単一の超高速バイナリ（<code>Obwrite.exe</code>）として動作し、起動もメモリ消費も驚くほど軽快です。</p>
+                    <h3 data-i18n="tech_4_title">Go 1.26 × Fyne ネイティブバイナリ</h3>
+                    <p data-i18n="tech_4_desc">重たい Electron は不採用。Go 言語でコンパイルされた単一の超高速バイナリ（<code>Obwrite.exe</code>）として動作し、起動もメモリ消費も驚くほど軽快です。</p>
                 </div>
             </div>
         </div>
@@ -255,8 +263,8 @@
     <section id="pricing" class="section-padding bg-darker">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">シンプルな <span class="text-gradient">ライセンス体系</span></h2>
-                <p class="section-subtitle">買い切りライセンスで、ずっと手元で使い続けられます。</p>
+                <h2 class="section-title" data-i18n-html="pricing_title">シンプルな <span class="text-gradient">ライセンス体系</span></h2>
+                <p class="section-subtitle" data-i18n="pricing_subtitle">買い切りライセンスで、ずっと手元で使い続けられます。</p>
             </div>
 
             <div class="pricing-container">
@@ -266,21 +274,21 @@
                     <div class="pricing-price">
                         <span class="currency">$</span>
                         <span class="amount">29</span>
-                        <span class="period">/ 買い切り (Lifetime)</span>
+                        <span class="period" data-i18n="price_period">/ 買い切り (Lifetime)</span>
                     </div>
-                    <p class="pricing-desc">すべてのプラットフォーム抽出、無制限のローカル保存、今後の機能アップデートを含む完全版。</p>
+                    <p class="pricing-desc" data-i18n="price_desc">すべてのプラットフォーム抽出、無制限のローカル保存、今後の機能アップデートを含む完全版。</p>
                     
                     <ul class="pricing-features">
-                        <li>✓ すべてのプラットフォーム抽出（X, メルカリ, Yahoo, Reddit, Civitai等）</li>
-                        <li>✓ 画像・動画メディアの自動ローカルダウンロード</li>
-                        <li>✓ 直線的ドメインルーティング ＆ ディレクトリ自動整理</li>
-                        <li>✓ HTML / Markdown フォーマット自在切替</li>
-                        <li>✓ 商用利用・個人利用可能</li>
-                        <li>✓ 永久アップデート ＆ オフライン完全対応</li>
+                        <li data-i18n="f_1">✓ すべてのプラットフォーム抽出（X, メルカリ, Yahoo, Reddit, Civitai等）</li>
+                        <li data-i18n="f_2">✓ 画像・動画メディアの自動ローカルダウンロード</li>
+                        <li data-i18n="f_3">✓ 直線的ドメインルーティング ＆ ディレクトリ自動整理</li>
+                        <li data-i18n="f_4">✓ HTML / Markdown フォーマット自在切替</li>
+                        <li data-i18n="f_5">✓ 商用利用・個人利用可能</li>
+                        <li data-i18n="f_6">✓ 永久アップデート ＆ オフライン完全対応</li>
                     </ul>
 
                     <div class="pricing-action">
-                        <a href="https://obwrite.gumroad.com/" class="btn btn-primary btn-block btn-lg" target="_blank">
+                        <a href="https://obwrite.gumroad.com/" class="btn btn-primary btn-block btn-lg" target="_blank" data-i18n="pricing_btn">
                             Gumroad でライセンスを購入 ($29)
                         </a>
                     </div>
@@ -289,14 +297,14 @@
 
             <!-- Free Trial / Download Section -->
             <div id="download" class="download-box glass-panel text-center">
-                <h3>無料プレビュー版をお試しください</h3>
-                <p>まずは手元の環境で高速な抽出体験をご確認いただけます。</p>
+                <h3 data-i18n="dl_title">無料プレビュー版をお試しください</h3>
+                <p data-i18n="dl_desc">まずは手元の環境で高速な抽出体験をご確認いただけます。</p>
                 <div class="download-buttons">
                     <a href="https://github.com/xzl10/obwrite-web/releases" class="btn btn-secondary btn-lg" target="_blank">
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
-                        Obwrite.exe (Windows 64bit) をダウンロード
+                        <span data-i18n="dl_btn">Obwrite.exe (Windows 64bit) をダウンロード</span>
                     </a>
                 </div>
             </div>
@@ -308,17 +316,17 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <span class="brand-text">Obwrite</span>
-                <p>The Ultimate Local Web-to-Obsidian Pipeline.</p>
+                <p data-i18n="footer_brand_sub">The Ultimate Local Web-to-Obsidian Pipeline.</p>
             </div>
             <div class="footer-links">
-                <a href="#features">機能</a>
-                <a href="#solutions">3つの喪失</a>
-                <a href="#pricing">価格</a>
+                <a href="#features" data-i18n="nav_features">機能</a>
+                <a href="#solutions" data-i18n="nav_solutions">3つの喪失</a>
+                <a href="#pricing" data-i18n="nav_pricing">価格</a>
                 <a href="https://github.com/xzl10/obwrite-web" target="_blank">GitHub</a>
             </div>
         </div>
         <div class="container footer-bottom text-center">
-            <p>&copy; 2026 Obwrite. All rights reserved. Designed for Obsidian Power Users.</p>
+            <p data-i18n="footer_copy">&copy; 2026 Obwrite. All rights reserved. Designed for Obsidian Power Users.</p>
         </div>
     </footer>
 </body>
