@@ -12,6 +12,7 @@ const i18nData = {
         nav_solutions: "3つの喪失",
         nav_platforms: "対応サイト",
         nav_pricing: "価格",
+        nav_support: "サポート",
         nav_buy_gumroad: "ライセンスを購入 ($29)",
 
         // Hero
@@ -90,6 +91,7 @@ const i18nData = {
         nav_solutions: "3 Losses Solved",
         nav_platforms: "Platforms",
         nav_pricing: "Pricing",
+        nav_support: "Support",
         nav_buy_gumroad: "Buy License ($29)",
 
         // Hero
