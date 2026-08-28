@@ -13,13 +13,15 @@ const i18nData = {
         nav_platforms: "対応サイト",
         nav_pricing: "価格",
         nav_support: "サポート",
-        nav_buy_gumroad: "ライセンスを購入 ($29)",
+        nav_buy_booth: "BOOTH (¥2,800)",
+        nav_buy_gumroad: "Gumroad ($29)",
 
         // Hero
-        badge_text: "Obwrite 3.1.0 — Web to Obsidian Pipeline",
+        badge_text: "Obwrite 0.8.0 — Early Access Pipeline",
         hero_title: 'Webのすべてを、<br><span class="text-gradient">Obsidian へ直接・恒久保存。</span>',
         hero_subtitle: "X.com のポスト、メルカリ・Yahoo!フリマの出品、Reddit や Civitai の投稿をワンクリックで抽出。<br>画像・動画もローカル Vault に一括保存し、データの消滅と散逸を永遠に防ぎます。",
-        hero_cta_buy: "ライセンスを購入 ($29)",
+        hero_cta_booth: "BOOTH で購入 (¥2,800)",
+        hero_cta_gumroad: "Gumroad ($29)",
         hero_meta_1: "✓ Windows 10 / 11 (64bit) ネイティブ",
         hero_meta_2: "✓ 完全ローカル動作（外部送信ゼロ）",
         hero_meta_3: "✓ 買い切り・永久アップデート対応",
@@ -76,7 +78,8 @@ const i18nData = {
         f_4: "✓ HTML / Markdown フォーマット自在切替",
         f_5: "✓ 商用利用・個人利用可能",
         f_6: "✓ 永久アップデート ＆ オフライン完全対応",
-        pricing_btn: "Gumroad でライセンスを購入 ($29)",
+        pricing_btn_booth: "BOOTH でライセンスを購入 (¥2,800)",
+        pricing_btn_gumroad: "Gumroad で購入 ($29)",
 
         // Footer
         footer_brand_sub: "The Ultimate Local Web-to-Obsidian Pipeline.",
@@ -92,13 +95,15 @@ const i18nData = {
         nav_platforms: "Platforms",
         nav_pricing: "Pricing",
         nav_support: "Support",
-        nav_buy_gumroad: "Buy License ($29)",
+        nav_buy_booth: "BOOTH (¥2,800)",
+        nav_buy_gumroad: "Gumroad ($29)",
 
         // Hero
-        badge_text: "Obwrite 3.1.0 — Web to Obsidian Pipeline",
+        badge_text: "Obwrite 0.8.0 — Early Access Pipeline",
         hero_title: 'Capture the Web directly into<br><span class="text-gradient">Obsidian. Without Limits.</span>',
         hero_subtitle: "Extract posts, high-res images, and videos from X.com, Mercari, Yahoo! Fleamarket, Reddit, and Civitai with 1 click.<br>Saved straight to your local Vault. Prevent digital decay and scattered files forever.",
-        hero_cta_buy: "Buy Lifetime License ($29)",
+        hero_cta_booth: "Buy on BOOTH (¥2,800)",
+        hero_cta_gumroad: "Buy on Gumroad ($29)",
         hero_meta_1: "✓ Windows 10 / 11 (64-bit) Native",
         hero_meta_2: "✓ 100% Local (Zero External Cloud)",
         hero_meta_3: "✓ One-Time Purchase. Lifetime Updates",
@@ -155,7 +160,8 @@ const i18nData = {
         f_4: "✓ Instant HTML / Markdown format toggle",
         f_5: "✓ Commercial and personal use license",
         f_6: "✓ Lifetime updates & 100% offline functionality",
-        pricing_btn: "Buy Lifetime License on Gumroad ($29)",
+        pricing_btn_booth: "Buy on BOOTH (¥2,800)",
+        pricing_btn_gumroad: "Buy Lifetime License on Gumroad ($29)",
 
         // Footer
         footer_brand_sub: "The Ultimate Local Web-to-Obsidian Pipeline.",
