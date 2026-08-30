@@ -5,7 +5,7 @@ import { loadPosts } from "./load-posts.mjs";
 import { normalizePosts } from "./normalize-post.mjs";
 
 const posts = normalizePosts(await loadPosts(config.postRoot), config);
-const paths = ["index.html", "blog/index.html", "feed.xml", "sitemap.xml", "robots.txt", "404.html", ...posts.map((post) => `blog/${post.slug}/index.html`)];
+const paths = ["index.html", "style.css", "platforms.css", "script.js", "blog/index.html", "feed.xml", "sitemap.xml", "robots.txt", "404.html", ...posts.map((post) => `blog/${post.slug}/index.html`)];
 for (const relativePath of paths) await access(path.join(config.siteRoot, relativePath));
 
 const htmlPaths = ["index.html", "blog/index.html", "404.html", ...posts.map((post) => `blog/${post.slug}/index.html`)];
@@ -23,6 +23,16 @@ for (const relativePath of htmlPaths) {
 }
 
 const index = await readFile(path.join(config.siteRoot, "index.html"), "utf8");
+const purchasePanel = index.match(/<section id="pricing" class="section purchase-panel"[\s\S]*?<\/section>/)?.[0];
+if (!purchasePanel) throw new Error("index.html: missing integrated purchase panel");
+if (!purchasePanel.includes('id="requirements"')) throw new Error("index.html: requirements must be inside the purchase panel");
+if (/<section id="requirements" class="section requirements">/.test(index)) throw new Error("index.html: standalone requirements section must not be rendered");
+for (const expected of ["Windows 10 / 11（64-bit）", "Google Chrome 最新版", "Obsidian local Vault", "Obwrite.exe / Startup manual", "macOS、Linux、スマートフォンは公式サポート対象外です。", "¥2,800", "BOOTHの商品説明を確認"]) {
+  if (!purchasePanel.includes(expected)) throw new Error(`index.html: purchase panel missing ${expected}`);
+}
+if (purchasePanel.includes("<details")) throw new Error("index.html: purchase requirements must remain visible");
+const landingBoothLinks = index.match(/https:\/\/booth\.pm\/ja\/items\/8774082/g)?.length ?? 0;
+if (landingBoothLinks !== 3) throw new Error(`index.html: expected three decision-stage BOOTH links, found ${landingBoothLinks}`);
 for (const expected of ["OBWRITE 0.8.0", "¥2,800", "楽天ラクマ", "EXPERIMENTAL", "Windows 10 / 11（64-bit）"]) {
   if (!index.includes(expected)) throw new Error(`index.html: missing SSOT value ${expected}`);
 }

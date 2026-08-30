@@ -49,7 +49,8 @@ Observation without invalidates_on = STALE_BY_CONSTRUCTION
 | broken internal link or missing asset | `quality/generated-link-asset-integrity.md` | static-page-addressability, staged-publication-rollback |
 | forbidden claim, support count, CTA count | `quality/public-claim-regression-gates.md` | product/disclosure/action/support content skills |
 | second build and hash comparison | `quality/output-determinism-verification.md` | deterministic-site-render, staged-publication-rollback |
-| local author/build/preview loop | `operations/author-build-preview-workflow.md` | ownership, publish, integrity, determinism skills |
+| local author/build/preview loop | `operations/author-build-preview-workflow.md` | ownership, publish, integrity, preview server skills |
+| local HTTP server, PORT, traversal, private paths | `operations/local-preview-server-boundary.md` | authoring-generated-zone-ownership, generated-link-asset-integrity |
 | BOOTH/release/price/support resync | `operations/external-ssot-resynchronization.md` | product-claim-ssot, public-claim-regression-gates |
 | deploy, GitHub Pages, CNAME, HTTPS | `operations/deployment-readiness-gate.md` | preview, resync, integrity, claim gates |
 
@@ -95,6 +96,7 @@ Observation without invalidates_on = STALE_BY_CONSTRUCTION
 ### operations
 
 - `author-build-preview-workflow`
+- `local-preview-server-boundary`
 - `external-ssot-resynchronization`
 - `deployment-readiness-gate`
 

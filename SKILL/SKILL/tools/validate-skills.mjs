@@ -67,6 +67,6 @@ const indexedIds = [...inventory.matchAll(/^- `([^`]+)`$/gm)].map((match) => mat
 if (new Set(indexedIds).size !== indexedIds.length) throw new Error("INDEX inventory contains duplicate ids");
 for (const id of skills.keys()) if (!indexedIds.includes(id)) throw new Error(`INDEX missing skill ${id}`);
 for (const id of indexedIds) if (!skills.has(id)) throw new Error(`INDEX references unknown skill ${id}`);
-if (skills.size !== 22) throw new Error(`expected 22 skills, found ${skills.size}`);
+if (skills.size !== 23) throw new Error(`expected 23 skills, found ${skills.size}`);
 
 console.log(`Validated ${skills.size} Obwrite Web skills across ${responsibilities.length} responsibilities.`);

@@ -13,7 +13,7 @@ const forbiddenClaims = [
 
 export function validateRenderedDocuments(documents) {
   const entries = new Map(documents);
-  const required = ["index.html", "style.css", "script.js", "blog/index.html", "feed.xml", "sitemap.xml", "robots.txt", "404.html"];
+  const required = ["index.html", "style.css", "platforms.css", "script.js", "blog/index.html", "feed.xml", "sitemap.xml", "robots.txt", "404.html"];
   for (const path of required) {
     if (!entries.has(path)) throw new Error(`missing generated document: ${path}`);
   }

@@ -10,7 +10,7 @@ related:
   - authoring-generated-zone-ownership
   - staged-publication-rollback
   - generated-link-asset-integrity
-  - output-determinism-verification
+  - local-preview-server-boundary
 ---
 
 ## Action
@@ -24,9 +24,8 @@ Workflow
   := inspect relevant source
    → edit `_site-src/**` or `tools/site/**`
    → `npm test`
-   → `npm run build`
-   → `npm run validate`
-   → start local static server
+   → `npm run preview`
+      := build → validate → serve published surface
    → review 360px, 768px, 1280px
    → inspect generated diff
 
