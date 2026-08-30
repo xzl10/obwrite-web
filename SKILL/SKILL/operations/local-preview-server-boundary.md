@@ -14,23 +14,23 @@ related:
 ## Action
 
 // SKILL := local_preview_server_boundary
-// Signature: HTTPRequest × GeneratedPathManifest → HTTPResponse
+// Signature: LocalPreviewRequest × PublishedManifest → HTTPResponse
 
-CORE := LocalOriginGate → PublishedPathContainment → StaticResponse
+CORE := LocalOriginGate → PublishedSurfaceContainment → StaticResponse
 
-BindAddress := `127.0.0.1`
-AllowedHost := { `127.0.0.1`, `localhost` }
-AllowedMethod := { GET, HEAD }
-PublishedSurface := config.generatedPaths
+ListenerScope := loopback_only
+AllowedAuthority MUST resolve_to ListenerScope
+AllowedMethod := safe_static_retrieval_methods
+PublishedSurface := PublishedManifest
 
 RequestPath
-  → decode_or_400
-  → reject_NUL_backslash_parent_segment
-  → generated_allowlist_or_404
-  → lexical_containment_or_404
-  → realpath_containment_or_404
-  → regular_file_or_404
+  → decode_or_client_error
+  → reject_ambiguous_or_parent_segments
+  → manifest_membership_or_not_found
+  → lexical_containment_or_not_found
+  → resolved_containment_or_not_found
+  → regular_artifact_or_not_found
 
-RepositoryPrivatePath ∩ PublishedSurface = ∅
-ResponseHeaders := no_store ∪ nosniff ∪ MIME
-InvalidPort ∨ ListenFailure ⇒ nonzero_exit_before_ready
+RepositoryPrivateSurface ∩ PublishedSurface = ∅
+Response MUST declare safe content semantics
+ListenConfigurationFailure ⇒ fail_before_ready

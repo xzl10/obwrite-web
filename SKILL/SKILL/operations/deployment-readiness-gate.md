@@ -16,21 +16,22 @@ related:
 ## Action
 
 // SKILL := deployment_readiness_gate
-// Signature: LocalSiteState × HostingState × HumanApproval → DeployVerdict
+// Signature: LocalVerificationState × HostingPreconditionSet × HumanApproval → DeployVerdict
 
 CORE := LocalVerification → HostingPreconditions → ExplicitApproval
 
 LocalReady
-  := tests_pass ∧ build_pass ∧ validation_pass
-   ∧ diff_reviewed ∧ responsive_reviewed
+  := declared_tests_pass
+   ∧ complete_build_pass
+   ∧ generated_validation_pass
+   ∧ semantic_diff_reviewed
+   ∧ representative_presentation_reviewed
 
-HostingReady
-  := CNAME_correct ∧ DNS_resolves ∧ certificate_state_known
+HostingReady := every declared hosting precondition is verified
 
-ProductProofStatus := real_demo_available | explicitly_pending
-ExplicitlyPending MUST NOT be rendered_as playable
+DeployReady
+  ⇔ LocalReady ∧ HostingReady ∧ ExplicitHumanApproval
 
-DeployReady ⇔ LocalReady ∧ HostingReady ∧ HumanCommitPushApproval
-
-CertificatePending ⇒ report blocker; do not claim HTTPS enforcement
-MissingHumanApproval ⇒ no commit ∧ no push
+UnknownHostingState ⇒ report blocker
+MissingHumanApproval ⇒ no repository_or_deployment_mutation
+FailedLocalGate ⇒ no deployment side effect

@@ -13,20 +13,19 @@ related:
 ## Action
 
 // SKILL := responsive_information_density
-// Signature: ViewportClass × ContentSet → LayoutProjection
+// Signature: AvailableGeometry × InformationSet → LayoutProjection
 
-CORE := MeasureAvailableWidth → ReflowGeometry → PreserveInformation
+CORE := MeasureAvailableGeometry → ReflowPresentation → PreserveMeaning
 
-WideViewport → multi_column_projection
-NarrowViewport → single_column_projection
-SupportMatrix := two_columns when width > current_support_breakpoint
-SupportMatrix := one_column when width <= current_support_breakpoint
+LayoutProjection MUST adapt geometry at declared constraints
+ConstraintValue is an implementation parameter, not knowledge
 
-BreakpointValue = mutable_implementation_parameter
+Reflow MUST preserve
+  content ∪ status ∪ capability ∪ action_meaning
 
-Reflow MUST preserve content, status, capability, and action meaning
-OverflowX = FALSE at supported viewport widths
+UnintendedOverflow = FALSE within supported geometry
 HideInformationToFit = FORBIDDEN
 
-CompactLayout := reduce spacing ∪ change geometry
-CompactLayout ≠ delete decision information
+CompactLayout MAY reduce spacing ∪ change arrangement
+CompactLayout MUST NOT delete decision-relevant information
+PresentationGeometry ≠ InformationIdentity

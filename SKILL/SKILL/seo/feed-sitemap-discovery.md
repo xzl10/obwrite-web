@@ -14,19 +14,20 @@ related:
 ## Action
 
 // SKILL := feed_sitemap_discovery
-// Signature: NormalizedPostSet → DiscoveryArtifactSet
+// Signature: CanonicalPublishedSet → DiscoveryProjectionSet
 
-CORE := PublishedPostFilter → MultiArtifactProjection → URLConsistency
+CORE := PublicationEligibility → MultiArtifactProjection → AddressConsistency
 
-PublishedPosts := NormalizedPosts where draft = FALSE
-DiscoveryArtifactSet := RSS(PublishedPosts) ∪ Sitemap(PublishedPosts) ∪ Robots
+DiscoveryProjectionSet
+  := FeedProjection ∪ IndexProjection ∪ CrawlerDeclaration
 
-DraftPosts ∩ RSS.items = ∅
-DraftPosts ∩ Sitemap.urls = ∅
+IneligibleContent ∩ DiscoveryProjectionSet = ∅
 
-∀ post ∈ PublishedPosts:
-  RSS.link(post) = CanonicalURL(post)
-  RSS.guid(post) = CanonicalURL(post)
-  Sitemap.loc(post) = CanonicalURL(post)
+∀ content ∈ CanonicalPublishedSet:
+  EveryDiscoveryAddress(content) = CanonicalAddress(content)
 
-Robots.sitemap = SiteURL + `/sitemap.xml`
+FeedIdentity(content) MUST remain stable for stable ContentIdentity
+CrawlerDeclaration MUST reference the declared discovery index
+
+Discovery artifacts MUST derive_from the same published snapshot
+PartialDiscoveryProjection = FORBIDDEN

@@ -14,20 +14,21 @@ related:
 ## Action
 
 // SKILL := locale_commerce_state_projection
-// Signature: LanguageState → PageCommerceProjection
+// Signature: LocalePreference × LocaleCatalog → AtomicPageProjection
 
-CORE := ResolveLanguage → SelectLocaleRecord → AtomicDOMProjection
+CORE := ResolveLocale → SelectCompleteRecord → AtomicProjection
 
-LanguageState := saved `{ja,en}` else browser_language else `ja`
+ResolveLocale
+  := valid_persisted_preference
+   ?? supported_environment_preference
+   ?? declared_default
 
-Projection(ja)
-  := html.lang `ja` ∪ JapaneseCopy ∪ BOOTH_URL ∪ JPY_Price
-Projection(en)
-  := html.lang `en` ∪ EnglishCopy ∪ Gumroad_URL ∪ USD_Price
+Projection
+  := document_language ∪ metadata ∪ visible_copy ∪ accessibility_state
 
-ProjectTogether
-  := title ∪ description ∪ text ∪ HTMLText ∪ store_href
-   ∪ price ∪ aria_pressed
+ProjectionFields MUST derive_from one LocaleRecord
+PartialLocaleProjection = FORBIDDEN
 
-PartialCommerceProjection = FORBIDDEN
-Persist(LanguageState) → localStorage.obwrite_lang
+CommerceAuthority ≠ LocaleProjectionAuthority
+EssentialCommerceAccess MUST survive locale enhancement failure
+Persist only validated supported preferences

@@ -13,19 +13,19 @@ related:
 ## Action
 
 // SKILL := progressive_enhancement_baseline
-// Signature: JavaScriptState × Page → CapabilitySet
+// Signature: BaselineState × EnhancementState → CapabilitySet
 
-CORE := StaticHTMLBaseline → OptionalEnhancement → CapabilityMonotonicity
+CORE := FunctionalBaseline → OptionalEnhancement → CapabilityMonotonicity
 
 BaselineCapabilities
   := readable_content
-   ∪ normal_navigation
-   ∪ article_retrieval
-   ∪ purchase_link
+   ∪ direct_navigation
+   ∪ public_content_retrieval
+   ∪ essential_action_access
 
-Capabilities(JavaScript=disabled) ⊇ BaselineCapabilities
-Capabilities(JavaScript=enabled) ⊇ Capabilities(JavaScript=disabled)
+Capabilities(Enhancement=unavailable) ⊇ BaselineCapabilities
+Capabilities(Enhancement=available)
+  ⊇ Capabilities(Enhancement=unavailable)
 
-JavaScriptEnhancements := locale_projection ∪ view_transition_hint
-
-JavaScriptFailure MUST NOT remove BaselineCapabilities
+EnhancementFailure MUST NOT remove BaselineCapabilities
+EnhancedCapability MUST NOT become an undeclared prerequisite

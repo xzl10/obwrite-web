@@ -13,20 +13,20 @@ related:
 ## Action
 
 // SKILL := decision_stage_action_ownership
-// Signature: PageContext × DecisionStage → ActionOwner
+// Signature: ContentContext × DecisionStage → ActionOwner
 
-CORE := ContextClassification → SinglePurpose → ActionPlacement
+CORE := ContextClassification → SingleActionOwner → StageAppropriatePlacement
 
-LP.Header owns persistent_purchase_access
-LP.Hero owns initial_purchase_decision
-LP.Pricing owns price_confirmed_purchase
+∀ context × action_purpose:
+  ∃! owner: Owns(owner, action_purpose, context)
 
-Article.Header owns purchase_access
-Article.Body owns information
-Article.Related owns informational_continuation
+InformationalContext owns informational_continuation
+DecisionContext owns decision_action
+PersistentAccessContext owns persistent_action_access
 
-Article.Body ∩ PurchaseAction = ∅
-Article.Related ∩ PurchaseAction = ∅
+InformationalContent ∩ DecisionAction = ∅
 
-RepeatedAction is valid only when DecisionStage differs
-SameContextDuplicateAction ⇒ REMOVE
+RepeatedAction is valid only_if DecisionStage differs
+SameContext ∧ SamePurpose ∧ DuplicateAction ⇒ REMOVE
+
+Component replacement MUST preserve ownership, not component identity

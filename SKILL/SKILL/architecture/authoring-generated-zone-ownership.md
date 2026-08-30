@@ -12,22 +12,22 @@ related: []
 ## Action
 
 // SKILL := authoring_generated_zone_ownership
-// Signature: RepositoryPath × GeneratedManifest → Owner
+// Signature: Artifact × OwnershipDeclaration → MutationOwner
 
-CORE := PathClassification → SingleOwner → MutationRoute
+CORE := ArtifactClassification → SingleOwner → AuthorizedMutationRoute
 
-AuthoringZone := `_site-src/**`
-BuildZone := `tools/site/**` ∪ { package.json, package-lock.json }
-GeneratedZone := config.generatedPaths projected_at RepositoryRoot
+ArtifactClass
+  := AuthoringSource ∪ BuildMechanism ∪ GeneratedProjection
 
-Owner(AuthoringZone) = Human
-Owner(BuildZone) = BuildSystemMaintainer
-Owner(GeneratedZone) = Generator
+∀ artifact:
+  ∃! owner: Owns(owner, artifact)
 
-AuthoringZone ∩ GeneratedZone = ∅
+AuthoringSource ∩ GeneratedProjection = ∅
+BuildMechanism transforms AuthoringSource into GeneratedProjection
 
-RequestedMutation(Path ∈ GeneratedZone)
-  ⇒ RedirectMutationTo(CorrespondingAuthoringSource)
+RequestedMutation(GeneratedProjection)
+  ⇒ Resolve(CorrespondingAuthoringSource ∪ BuildMechanism)
+  ⇒ Mutate(ResolvedOwner)
   ⇒ Regenerate
 
-UnknownPath ⇒ Inspect(config.generatedPaths) before mutation
+UnknownArtifact ⇒ Inspect(OwnershipDeclaration) before mutation

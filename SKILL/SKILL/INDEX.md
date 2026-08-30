@@ -18,12 +18,13 @@ Read this file first. Route by Web engineering responsibility, then load only th
 
 ```text
 Folder := Web responsibility
-knowledge_type := invariant | policy | mechanism | observation
-temporality := timeless | stateful | dated
+knowledge_type := invariant | policy | mechanism
+temporality := timeless | stateful
 
 MutableValue promoted_to TimelessInvariant = CATEGORY_ERROR
 Policy labelled_as Theorem = CATEGORY_ERROR
-Observation without invalidates_on = STALE_BY_CONSTRUCTION
+MutableObservation → ExternalEvidence | Config | TestFixture | DatedDocument
+VolatileImplementationLiteral ∩ SkillAction = ∅
 ```
 
 ## Task Routing
@@ -33,26 +34,26 @@ Observation without invalidates_on = STALE_BY_CONSTRUCTION
 | source vs generated, where to edit | `architecture/authoring-generated-zone-ownership.md` | — |
 | article route, direct URL, static 404 | `architecture/static-page-addressability.md` | authoring-generated-zone-ownership |
 | JavaScript disabled, baseline navigation | `architecture/progressive-enhancement-baseline.md` | static-page-addressability |
-| version, price, requirements, support truth | `content/product-claim-ssot.md` | — |
+| claim authority, projection, invalidation | `content/product-claim-ssot.md` | — |
 | public outcome vs private mechanism | `content/selective-outcome-disclosure.md` | — |
-| CTA duplication and placement | `content/decision-stage-action-ownership.md` | progressive-enhancement-baseline |
-| Stable/Experimental and capability tags | `content/support-capability-status-model.md` | product-claim-ssot |
+| action ownership by context and decision stage | `content/decision-stage-action-ownership.md` | progressive-enhancement-baseline |
+| support status partition, capability, uncertainty | `content/support-capability-status-model.md` | product-claim-ssot |
 | semantic HTML, alt, heading, keyboard | `frontend/semantic-accessibility-baseline.md` | progressive-enhancement-baseline |
-| JA/EN, BOOTH/Gumroad, localized price | `frontend/locale-commerce-state-projection.md` | product-claim-ssot, progressive-enhancement-baseline |
-| mobile, breakpoint, overflow, density | `frontend/responsive-information-density.md` | semantic-accessibility-baseline |
+| locale resolution, atomic projection, commerce fallback | `frontend/locale-commerce-state-projection.md` | product-claim-ssot, progressive-enhancement-baseline |
+| reflow, overflow, information preservation | `frontend/responsive-information-density.md` | semantic-accessibility-baseline |
 | title, description, canonical, OG, Twitter | `seo/page-metadata-contract.md` | static-page-addressability |
 | BlogPosting JSON-LD | `seo/blogposting-structured-data.md` | page-metadata-contract |
 | RSS, sitemap, robots, draft discovery | `seo/feed-sitemap-discovery.md` | static-page-addressability, page-metadata-contract |
-| frontmatter, slug, date, draft, sort | `build/content-ingestion-normalization.md` | — |
-| render HTML/XML/JSON-LD/CSS/JS | `build/deterministic-site-render.md` | content-ingestion-normalization + relevant architecture/seo skills |
+| content schema, canonical identity, eligibility, total order | `build/content-ingestion-normalization.md` | — |
+| declared output closure and contextual serialization | `build/deterministic-site-render.md` | content-ingestion-normalization + relevant architecture/seo skills |
 | stage, backup, replace, rollback | `build/staged-publication-rollback.md` | authoring-generated-zone-ownership, deterministic-site-render |
-| broken internal link or missing asset | `quality/generated-link-asset-integrity.md` | static-page-addressability, staged-publication-rollback |
-| forbidden claim, support count, CTA count | `quality/public-claim-regression-gates.md` | product/disclosure/action/support content skills |
+| unresolved internal reference or missing declared asset | `quality/generated-link-asset-integrity.md` | static-page-addressability, staged-publication-rollback |
+| required/forbidden claim and declared cardinality | `quality/public-claim-regression-gates.md` | product/disclosure/action/support content skills |
 | second build and hash comparison | `quality/output-determinism-verification.md` | deterministic-site-render, staged-publication-rollback |
-| local author/build/preview loop | `operations/author-build-preview-workflow.md` | ownership, publish, integrity, preview server skills |
-| local HTTP server, PORT, traversal, private paths | `operations/local-preview-server-boundary.md` | authoring-generated-zone-ownership, generated-link-asset-integrity |
-| BOOTH/release/price/support resync | `operations/external-ssot-resynchronization.md` | product-claim-ssot, public-claim-regression-gates |
-| deploy, GitHub Pages, CNAME, HTTPS | `operations/deployment-readiness-gate.md` | preview, resync, integrity, claim gates |
+| authoring change through declared verification and review | `operations/author-build-preview-workflow.md` | ownership, publish, integrity, preview server skills |
+| loopback preview, traversal, published-surface containment | `operations/local-preview-server-boundary.md` | authoring-generated-zone-ownership, generated-link-asset-integrity |
+| external authority change and dependent resynchronization | `operations/external-ssot-resynchronization.md` | product-claim-ssot, public-claim-regression-gates |
+| deploy readiness, hosting preconditions, human approval | `operations/deployment-readiness-gate.md` | preview, resync, integrity, claim gates |
 
 ## Inventory
 
@@ -125,6 +126,6 @@ seo ──────> content | architecture
 3. Load direct `related` dependencies only when required.
 4. Maximum loaded skills per task = 5.
 5. Related traversal depth <= 1.
-6. For `knowledge_type=observation`, verify `invalidates_on` before use.
+6. Resolve mutable current values from declared code/config/test/docs sources.
 7. Do not bulk-load this corpus.
 ```

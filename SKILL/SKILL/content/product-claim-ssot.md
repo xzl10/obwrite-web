@@ -3,32 +3,28 @@ id: product-claim-ssot
 trigger: "product claim, price, version, support status, requirements, BOOTH SSOT, claim sync"
 confidence: 0.7
 responsibility: content
-knowledge_type: observation
-temporality: dated
-source: "BOOTH public listing snapshot; tools/site/config.mjs; _site-src/lp/index.html"
+knowledge_type: policy
+temporality: timeless
+source: "tools/site/config.mjs; _site-src/lp/index.html; tools/site/validate-generated-site.mjs"
 related: []
-observed_at: 2026-08-30
-evidence: "Public BOOTH listing and local v0.8.0 Early Access snapshot"
-invalidates_on: "BOOTH listing, release version, price, requirements, or support status changes"
 ---
 
 ## Action
 
 // SKILL := product_claim_ssot
-// Signature: ExternalListingObservation → LocalClaimSnapshot
+// Signature: MutableClaimSet × ProjectionSet → ClaimOwnershipMap
 
-CORE := HumanObservation → LocalSnapshot → PublicClaimBoundary
+CORE := AuthoritativeClaimOwner → DerivedProjection → InvalidationBoundary
 
-CurrentSnapshot
-  := version `0.8.0 Early Access`
-   ∪ BOOTH price `¥2,800`
-   ∪ Windows `10/11 64-bit`
-   ∪ latest Google Chrome
-   ∪ local Obsidian Vault
-   ∪ Stable {X.com, Mercari, Yahoo! Flea Market, Rakuten Rakuma}
-   ∪ Experimental {Reddit, Civitai}
+∀ claim ∈ MutableClaimSet:
+  ∃! owner ∈ AuthoritativeSources: Owns(owner, claim)
 
-BuildTimeFetch(ExternalListing) = FALSE
+Projection(claim) ≠ Owner(claim)
+Projection MUST derive_from AuthoritativeValue(claim)
 
-ExternalChange ⇒ SnapshotStale ⇒ HumanResynchronizationRequired
-PublicClaim MUST derive_from CurrentNonStaleSnapshot
+AuthoritativeValueChange(claim)
+  ⇒ Invalidate(AllDependentProjections(claim))
+  ⇒ HumanVerifiedResynchronization
+
+BuildTimeFetch(ExternalAuthority) = FALSE
+PartialProjectionUpdate = FORBIDDEN

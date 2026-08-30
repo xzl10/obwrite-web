@@ -13,20 +13,21 @@ related:
 ## Action
 
 // SKILL := blogposting_structured_data
-// Signature: NormalizedPost × CanonicalURL → JSONLD
+// Signature: CanonicalArticleIdentity × ArticleMetadata → StructuredData
 
-CORE := NormalizedPostProjection → SafeSerialization → MetadataIdentity
+CORE := IdentityProjection → ContextSafeSerialization → CrossSurfaceConsistency
 
-BlogPosting
-  := headline(post.title)
-   ∪ description(post.description)
-   ∪ datePublished(post.date)
-   ∪ dateModified(post.updated)
-   ∪ inLanguage(`ja`)
-   ∪ author(ObwriteOfficial)
-   ∪ publisher(ObwriteOfficial)
-   ∪ mainEntityOfPage(canonical)
+StructuredData MUST project declared article identity and provenance
 
-JSONLD.headline = VisibleArticleHeading
-JSONLD.mainEntityOfPage = CanonicalURL
-Serialize(JSONLD) MUST escape `<` as `\u003c`
+IdentityFields
+  := headline ∪ description ∪ publication_time
+   ∪ modification_time ∪ language ∪ authorship ∪ canonical_address
+
+StructuredData.headline = VisibleArticleHeading
+StructuredData.canonical_address = CanonicalAddress
+StructuredData values MUST derive_from ArticleMetadata
+
+Serialize(StructuredData, ScriptContext)
+  MUST neutralize script-context termination
+
+StructuredData MUST NOT invent unavailable metadata

@@ -5,14 +5,20 @@ import matter from "gray-matter";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const responsibilities = ["architecture", "content", "frontend", "seo", "build", "quality", "operations"];
-const knowledgeTypes = new Set(["invariant", "policy", "mechanism", "observation"]);
-const temporalities = new Set(["timeless", "stateful", "dated"]);
+const knowledgeTypes = new Set(["invariant", "policy", "mechanism"]);
+const temporalities = new Set(["timeless", "stateful"]);
 const allowedTemporality = {
   invariant: new Set(["timeless"]),
   policy: new Set(["timeless", "stateful"]),
-  mechanism: new Set(["stateful"]),
-  observation: new Set(["dated"])
+  mechanism: new Set(["stateful"])
 };
+const volatileActionPatterns = [
+  ["dated literal", /\b\d{4}-\d{2}-\d{2}\b/],
+  ["semantic version", /\bv?\d+\.\d+\.\d+\b/i],
+  ["currency amount", /(?:¥|\$|USD|JPY)\s*\d/i],
+  ["absolute URL", /https?:\/\/\S+/i],
+  ["pixel value", /\b\d+(?:\.\d+)?px\b/i]
+];
 const required = ["id", "trigger", "confidence", "responsibility", "knowledge_type", "temporality", "source", "related"];
 const skills = new Map();
 
@@ -32,14 +38,20 @@ for (const responsibility of responsibilities) {
     if (!knowledgeTypes.has(data.knowledge_type)) throw new Error(`${name}: invalid knowledge_type`);
     if (!temporalities.has(data.temporality) || !allowedTemporality[data.knowledge_type].has(data.temporality)) throw new Error(`${name}: invalid temporality for ${data.knowledge_type}`);
     if (!Array.isArray(data.related) || data.related.length > 4) throw new Error(`${name}: related must be an array of at most 4 direct dependencies`);
-    const observationFields = ["observed_at", "evidence", "invalidates_on"];
-    if (data.knowledge_type === "observation") {
-      for (const field of observationFields) if (!(field in data) || !String(data[field]).trim()) throw new Error(`${name}: observation missing ${field}`);
-    } else {
-      for (const field of observationFields) if (field in data) throw new Error(`${name}: ${field} is reserved for observations`);
+    for (const field of ["observed_at", "evidence", "invalidates_on"]) {
+      if (field in data) throw new Error(`${name}: mutable observations belong in code, config, tests, or dated documents`);
     }
     if ((source.match(/^## Action$/gm) ?? []).length !== 1) throw new Error(`${name}: expected exactly one Action section`);
     if ((source.match(/^CORE :=/gm) ?? []).length !== 1) throw new Error(`${name}: expected exactly one CORE relation`);
+    const actionOffset = source.indexOf("## Action");
+    const action = source.slice(actionOffset);
+    for (const [literalClass, pattern] of volatileActionPatterns) {
+      const match = action.match(pattern);
+      if (match) {
+        const line = source.slice(0, actionOffset + match.index).split(/\r?\n/).length;
+        throw new Error(`${name}:${line}: ${literalClass} is mutable implementation evidence, not an Action relation`);
+      }
+    }
     if (source.trimEnd().split(/\r?\n/).length > 40) throw new Error(`${name}: exceeds 40-line budget`);
     skills.set(data.id, { name, data });
   }

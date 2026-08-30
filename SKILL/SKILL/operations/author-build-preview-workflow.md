@@ -16,18 +16,19 @@ related:
 ## Action
 
 // SKILL := author_build_preview_workflow
-// Signature: ApprovedWebChange → VerifiedLocalSite
+// Signature: ApprovedAuthoringChange × VerificationDeclaration → ReviewedSite
 
-CORE := EditAuthoringSource → TestBuildValidate → MultiViewportReview
+CORE := MutateOwnedSource → ExecuteDeclaredGates → ReviewPublishedProjection
 
 Workflow
-  := inspect relevant source
-   → edit `_site-src/**` or `tools/site/**`
-   → `npm test`
-   → `npm run preview`
-      := build → validate → serve published surface
-   → review 360px, 768px, 1280px
-   → inspect generated diff
+  := inspect ownership and relevant witnesses
+   → mutate only the resolved owner
+   → execute declared tests
+   → build complete published projection
+   → validate generated graph and public contracts
+   → review representative geometry classes
+   → inspect semantic generated diff
 
-DirectEdit(GeneratedZone) = FORBIDDEN
+DirectMutation(GeneratedProjection) = FORBIDDEN
+FormattingOnlyDiff ≠ SemanticDiff
 FailedGate ⇒ stop before deployment

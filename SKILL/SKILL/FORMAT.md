@@ -8,19 +8,11 @@ id: kebab-case
 trigger: "retrieval anchors"
 confidence: 0.5
 responsibility: architecture | content | frontend | seo | build | quality | operations
-knowledge_type: invariant | policy | mechanism | observation
-temporality: timeless | stateful | dated
-source: "repository evidence, public snapshot, or minimal literature"
+knowledge_type: invariant | policy | mechanism
+temporality: timeless | stateful
+source: "repository witness or minimal literature"
 related: []
 ---
-```
-
-Observation skills additionally require:
-
-```yaml
-observed_at: YYYY-MM-DD
-evidence: "verifiable source"
-invalidates_on: "explicit refresh condition"
 ```
 
 ## Action Contract
@@ -46,19 +38,22 @@ TraversalDepth(related) <= 1
 ActionSectionCount = 1
 CoreRelationCount = 1
 PreferredLineCount <= 40
+SkillEligible ⇔ RelationSurvivesPlausibleImplementationChanges
+MutableObservation ∪ IncidentalMarkup ∪ DefectCandidate ⊆ CodeConfigTestDocs
 ```
 
 ## Knowledge Discipline
 
 ```text
-invariant  → timeless relation; no mutable product value
-policy     → reversible design choice; never label THEOREM or COROLLARY
-mechanism  → state, transition, I/O, failure, or rollback
-observation→ dated evidence with explicit invalidation
+invariant → timeless relation; no mutable product value
+policy    → reversible design choice; never label THEOREM or COROLLARY
+mechanism → stable state topology, I/O boundary, failure, or rollback
 
 FormalPredicate applied_to PhysicalTransition = CATEGORY_ERROR
-PhysicalParameter ∈ {version, price, breakpoint, filesystem state, external status}
-PhysicalParameter MUST NOT be promoted to timeless invariant
+MutableObservation → ExternalEvidence | Config | TestFixture | DatedDocument
+VolatileImplementationLiteral ∩ ActionRelation = ∅
+RepositoryPath is permitted in source metadata, not as Action ownership
+PreservePremise(Line) when deletion loses identification or validity
 ```
 
 Use English low-level declarative notation. Keep retrieval anchors in `trigger`; keep derivation and operational rules in `Action`. `INDEX.md` routes knowledge but never duplicates Action bodies.

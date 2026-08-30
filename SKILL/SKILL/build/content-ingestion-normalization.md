@@ -12,22 +12,21 @@ related: []
 ## Action
 
 // SKILL := content_ingestion_normalization
-// Signature: MarkdownDocumentSet × BuildConfig → NormalizedPublishedPostSet
+// Signature: RawContentSet × PublicationPolicy → CanonicalPublishedSet
 
-CORE := DeterministicLoad → SchemaValidation → PublicationFilterSort
+CORE := DeterministicLoad → SchemaValidation → EligibilityFilter → TotalOrder
 
-LoadOrder := lexical_filename_order
-Required := { title, description, date, updated, slug, category, featured, draft }
-SlugPattern := lowercase_alnum_with_single_hyphen_separators
+Load(RawContentSet) MUST be independent_of filesystem enumeration order
 
-ASSERT title ≠ empty ∧ description ≠ empty ∧ body ≠ empty
-ASSERT date, updated are valid `YYYY-MM-DD`
-ASSERT updated >= date
-ASSERT category ∈ config.categories
-ASSERT featured, draft ∈ Boolean
-ASSERT slug is unique
-ASSERT published date <= current Tokyo date
+∀ item:
+  ValidateRequiredIdentity(item)
+  ∧ ValidateContent(item)
+  ∧ ValidateTypedMetadata(item)
 
-Output := posts where draft = FALSE
-Sort(Output) := date descending, then slug ascending
-Freeze(each Output)
+CanonicalIdentity MUST be unique within RawContentSet
+PublicationEligibility MUST derive_from PublicationPolicy
+
+Sort(CanonicalPublishedSet) MUST define a deterministic total order
+EqualPrimarySortKey ⇒ deterministic_tie_breaker
+
+Output contains only validated eligible immutable values

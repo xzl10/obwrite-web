@@ -13,20 +13,18 @@ related:
 ## Action
 
 // SKILL := static_page_addressability
-// Signature: PublicContentSet → AddressablePathSet
+// Signature: PublicContentSet → AddressableResourceSet
 
-CORE := ContentIdentity → UniquePath → DirectRetrieval
-
-Path(LandingPage) := `/`
-Path(BlogIndex) := `/blog/`
-Path(Post(slug)) := `/blog/{slug}/`
-Path(NotFound) := `/404.html`
+CORE := ContentIdentity → UniqueAddress → DirectRetrieval
 
 ∀ content ∈ PublicContentSet:
-  ∃! path ∈ AddressablePathSet: GET(path) returns content without modal state
+  ∃! address ∈ AddressableResourceSet:
+    Retrieve(address) returns content without prior client state
 
-PostIdentity(post_a) ≠ PostIdentity(post_b)
-  ⇒ Path(post_a) ≠ Path(post_b)
+ContentIdentity(content_a) ≠ ContentIdentity(content_b)
+  ⇒ Address(content_a) ≠ Address(content_b)
 
-ModalOnlyArticle = FALSE
-SingleURLRuntimeBlog = FALSE
+Address(content) MUST remain stable while identity(content) is stable
+
+ModalOnlyPublicContent = FALSE
+SharedRuntimeAddressForDistinctContent = FALSE

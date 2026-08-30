@@ -14,21 +14,22 @@ related:
 ## Action
 
 // SKILL := generated_link_asset_integrity
-// Signature: PublishedSiteGraph × SiteURL → IntegrityVerdict
+// Signature: DeclaredSiteGraph × PublishedArtifactSet → IntegrityVerdict
 
-CORE := EnumeratePublishedArtifacts → ResolveInternalReferences → AssertExistence
+CORE := EnumerateDeclarations → ResolveReferences → AssertGraphClosure
 
-∀ required_path: filesystem.exists(siteRoot / required_path)
+∀ declared_artifact:
+  exists_in PublishedArtifactSet
 
-∀ href ∈ HTML.href:
-  href.origin = SiteURL
-    ⇒ Resolve(href.pathname) exists_in PublishedSiteGraph
+∀ internal_reference ∈ PublishedArtifactSet:
+  Resolve(internal_reference) exists_in PublishedArtifactSet
 
-∀ platform_asset ∈ DeclaredPlatformAssets:
-  HTML references platform_asset
-  ∧ filesystem.exists(platform_asset)
+∀ declared_asset:
+  ReferencedWhenRequired(declared_asset)
+  ∧ exists_in PublishedArtifactSet
 
-∀ post:
-  canonical = SiteURL + `/blog/{slug}/`
+∀ addressable_content:
+  CanonicalReference = DeclaredAddress(addressable_content)
 
-AnyMissingReference ⇒ FAIL with source page and target
+AnyMissingReference
+  ⇒ FAIL with source artifact and unresolved target

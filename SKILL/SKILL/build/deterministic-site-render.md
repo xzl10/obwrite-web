@@ -16,20 +16,20 @@ related:
 ## Action
 
 // SKILL := deterministic_site_render
-// Signature: FixedSourceSnapshot × NormalizedPosts × Config → DocumentMap
+// Signature: FixedInputSnapshot × OutputDeclaration → DocumentMap
 
-CORE := PureProjectionBoundary → ContextualEscaping → CompleteDocumentMap
+CORE := PureProjectionBoundary → ContextualSerialization → CompleteOutputMap
 
-MarkdownAdapter.html = FALSE
-HTMLText → escapeHtml
-XMLText → escapeXml
-StructuredData → jsonLd
+∀ value crossing OutputContext:
+  Serialize(value, OutputContext)
 
-DocumentMap MUST contain
-  { index.html, style.css, platforms.css, script.js,
-    blog/index.html, feed.xml, sitemap.xml, robots.txt, 404.html }
+OutputContext
+  := MarkupText ∪ StructuredData ∪ DiscoveryDocument ∪ StaticAsset
 
-∀ post ∈ NormalizedPosts:
-  DocumentMap contains `blog/{post.slug}/index.html`
+DocumentMap contains exactly DeclaredOutputs(FixedInputSnapshot)
 
+∀ public_content ∈ FixedInputSnapshot:
+  DocumentMap contains Address(public_content)
+
+NoUndeclaredOutput ∧ NoMissingDeclaredOutput
 SameByteInputs ∧ SameToolchain ⇒ ExpectedSameByteDocumentMap

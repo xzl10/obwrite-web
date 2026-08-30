@@ -14,21 +14,19 @@ related:
 ## Action
 
 // SKILL := external_ssot_resynchronization
-// Signature: VerifiedExternalChange × LocalClaimSnapshot → SynchronizedSite
+// Signature: VerifiedAuthorityChange × ClaimDependencyGraph → SynchronizedProjectionSet
 
-CORE := ObserveExternalChange → UpdateAllClaimProjections → VerifyConsistency
-
-ChangeSet
-  := version ∪ price ∪ purchase_URL ∪ requirements
-   ∪ delivery_contents ∪ support_status ∪ capability_scope
+CORE := VerifyAuthorityChange → InvalidateDependents → UpdateOwnedProjections → VerifyConsistency
 
 For each changed claim:
-  update config when structurally owned there
-  update authoring copy and locale projection
-  update dated evidence metadata
-  update regression expectations
-  regenerate and validate
+  resolve authoritative owner
+  enumerate active dependent projections
+  update each projection through its mutation owner
+  update derived validation expectations
+  regenerate published artifacts
+  verify dependency-graph consistency
 
-BuildTimeNetworkFetch = FALSE
-UnverifiedExternalValue ⇒ DEFER
-PartialClaimUpdate ⇒ FAIL consistency gate
+AbsentProjection is not an update target
+BuildTimeAuthorityFetch = FALSE
+UnverifiedAuthorityValue ⇒ DEFER
+PartialDependentUpdate ⇒ FAIL consistency gate

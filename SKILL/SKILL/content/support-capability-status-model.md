@@ -13,22 +13,21 @@ related:
 ## Action
 
 // SKILL := support_capability_status_model
-// Signature: PlatformSnapshot → SupportPresentation
+// Signature: SupportSubjectSet × SupportDeclaration → SupportProjection
 
-CORE := SupportStatusPartition → CapabilityArray → ConstraintVisibility
+CORE := DisjointStatusPartition → CapabilityProjection → UncertaintyDisclosure
 
-Stable := PlatformSnapshot.stable
-Experimental := PlatformSnapshot.experimental
-Stable ∩ Experimental = ∅
+StatusClasses MUST be mutually exclusive for each SupportSubject
 
-∀ platform ∈ Stable ∪ Experimental:
-  Render(platform.name, platform.capabilities)
+∀ subject ∈ SupportSubjectSet:
+  Render(Identity(subject), Status(subject), Capabilities(subject))
 
-∀ platform ∈ Experimental:
-  Render(platform.constraints)
+CapabilityProjection MUST derive_from SupportDeclaration
+UnsupportedOrConditionalCapability MUST NOT appear unconditional
 
-Presentation := StableColumn ∪ ExperimentalColumn
-PlatformDescription := CapabilityArray
+CompactProjection MAY reduce detail
+CompactProjection MUST preserve status meaning
+DetailedLimitations MUST remain discoverable
 
-PlatformCardLinkToThirdParty = FALSE
-ExperimentalConstraintVisibility = REQUIRED
+PresentationGeometry ≠ SupportSemantics
+ThirdPartyIdentity ≠ ThirdPartyNavigationRequirement

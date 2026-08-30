@@ -16,21 +16,19 @@ related:
 ## Action
 
 // SKILL := public_claim_regression_gates
-// Signature: RenderedDocuments × ClaimSnapshot → ClaimVerdict
+// Signature: RenderedDocuments × ClaimExpectationSet → ClaimVerdict
 
-CORE := RequiredClaimPresence → ForbiddenClaimAbsence → CardinalityChecks
+CORE := RequiredPresence → ForbiddenAbsence → DeclaredCardinality
 
-ASSERT current version, price, requirements exist in landing page
-ASSERT StablePlatformCount = 4
-ASSERT ExperimentalPlatformCount = 2
-ASSERT PlatformCards use capability arrays, not prose
-ASSERT every declared capability and platform asset is present
+∀ expectation ∈ ClaimExpectationSet:
+  Required(expectation) ⇒ PresentInOwnedProjection(expectation)
+  Forbidden(expectation) ⇒ AbsentFromAllPublicProjections(expectation)
 
-ASSERT ForbiddenClaims ∩ RenderedDocuments = ∅
+RenderedCardinality(claim_class)
+  = DeclaredCardinality(claim_class)
 
-∀ article:
-  InlinePurchaseCTA = 0
-  BOOTH_URL_Count = 1
-  JSONLD.type = BlogPosting
+RenderedClaim MUST derive_from AuthoritativeClaimOwner
+EveryDeclaredCapabilityAndAsset MUST be represented where required
 
+ValidationExpectation ≠ AuthoritativeClaimOwner
 AnyAssertionFailure ⇒ block publication
