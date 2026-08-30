@@ -20,9 +20,9 @@ export function head({ title, description, canonical, type = "website", json = n
   <meta name="twitter:title" content="${safeTitle}">
   <meta name="twitter:description" content="${safeDescription}">
   <link rel="alternate" type="application/rss+xml" title="Obwrite Blog" href="https://obwrite.com/feed.xml">
-  <link rel="stylesheet" href="${canonical.endsWith('/blog/') ? '../style.css' : canonical.includes('/blog/') ? '../../style.css' : 'style.css'}">
+  <link rel="stylesheet" href="${canonical.endsWith('/blog/') ? '../style.css?v=20260830' : canonical.includes('/blog/') ? '../../style.css?v=20260830' : 'style.css?v=20260830'}">
   ${json ? `<script type="application/ld+json">${jsonLd(json)}</script>` : ""}
-  <script src="${canonical.endsWith('/blog/') ? '../script.js' : canonical.includes('/blog/') ? '../../script.js' : 'script.js'}" defer></script>
+  <script src="${canonical.endsWith('/blog/') ? '../script.js?v=20260830' : canonical.includes('/blog/') ? '../../script.js?v=20260830' : 'script.js?v=20260830'}" defer></script>
 </head>`;
 }
 
