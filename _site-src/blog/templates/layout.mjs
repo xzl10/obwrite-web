@@ -39,7 +39,7 @@ export function siteHeader(prefix = "") {
 
 export function siteFooter(prefix = "") {
   return `<footer class="site-footer">
-  <div><strong>Obwrite</strong><p>Webの情報をローカルObsidian Vaultへ。</p></div>
+  <div><strong>Obwrite</strong></div>
   <nav aria-label="フッターナビゲーション"><a href="${prefix}/blog/">ブログ</a><a href="mailto:obwrite@gmail.com">サポート</a><a href="https://x.com/Obwrite">公式X</a></nav>
   <p>© 2026 Obwrite Official</p>
 </footer>`;

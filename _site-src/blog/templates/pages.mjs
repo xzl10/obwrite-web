@@ -3,10 +3,10 @@ import { head, siteFooter, siteHeader } from "./layout.mjs";
 
 const labels = Object.freeze({ workflow: "ワークフロー", requirements: "動作環境", obsidian: "Obsidian", privacy: "プライバシー", release: "リリース" });
 
-export function postCard(post, prefix = "") {
+export function postCard(post, prefix = "", headingTag = "h3") {
   return `<a class="post-card${post.featured ? " post-card-featured" : ""}" href="${prefix}/blog/${post.slug}/">
   <span class="post-category">${labels[post.category]}</span>
-  <h3>${escapeHtml(post.title)}</h3>
+  <${headingTag}>${escapeHtml(post.title)}</${headingTag}>
   <p>${escapeHtml(post.description)}</p>
   <time datetime="${post.date}">${post.date}</time>
 </a>`;

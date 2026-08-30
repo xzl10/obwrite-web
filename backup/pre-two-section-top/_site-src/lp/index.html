@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obwrite — Webの投稿とメディアをObsidianへローカル保存</title>
+  <meta name="description" content="X.comの本文・オリジナル画像・動画、フリマの商品画像をローカルObsidian Vaultへ保存するWindowsデスクトップアプリ。v0.8.0 Early Access。">
+  <link rel="canonical" href="https://obwrite.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Obwrite">
+  <meta property="og:title" content="Obwrite — Webの投稿とメディアをObsidianへローカル保存">
+  <meta property="og:description" content="閲覧中のWebページから、本文とメディアを自分のObsidian Vaultへ。Windows向けEarly Access。">
+  <meta property="og:url" content="https://obwrite.com/">
+  <meta name="twitter:card" content="summary">
+  <link rel="alternate" type="application/rss+xml" title="Obwrite Blog" href="https://obwrite.com/feed.xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="platforms.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Obwrite ホーム">Obwrite</a>
+  <nav aria-label="メインナビゲーション"><a href="/blog/" data-i18n="nav_blog">ブログ</a></nav>
+  <div class="header-actions"><div class="language-switch" aria-label="言語"><button type="button" data-lang="ja" aria-pressed="true">JP</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div><a class="button button-small" data-store-link href="https://booth.pm/ja/items/8774082" data-i18n="nav_buy">BOOTHで購入</a></div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="badge">OBWRITE 0.8.0 · EARLY ACCESS</p>
+      <h1 data-i18n-html="hero_title">閲覧中のWebを、<br><span>自分のVaultへ。</span></h1>
+      <p class="hero-lead" data-i18n="hero_lead">X.comの本文・オリジナル画像・動画、フリマの商品画像を、ローカルのObsidian Vaultへ保存するWindowsデスクトップアプリです。</p>
+      <div class="hero-actions"><a class="button" data-store-link href="https://booth.pm/ja/items/8774082" data-i18n="hero_buy">BOOTHで購入 — ¥2,800</a><a class="text-link" href="#requirements" data-i18n="hero_check">購入前に動作環境を確認</a></div>
+      <ul class="fact-strip"><li data-i18n="fact_os">Windows 10 / 11（64-bit）</li><li data-i18n="fact_local">ローカル処理</li><li data-i18n="fact_manual">スタートアップマニュアル付属</li></ul>
+    </div>
+    <div class="archive-window" aria-label="保存結果のイメージ">
+      <div class="archive-head"><span>OBWRITE / CAPTURE</span><span class="status-dot">READY</span></div>
+      <div class="archive-flow"><div><small>WEB PAGE</small><strong>x.com / status</strong><span>本文 · original media</span></div><div class="flow-line" aria-hidden="true"></div><div><small>LOCAL VAULT</small><strong>Obwrite/x.com/</strong><span>Markdown · image · video</span></div></div>
+      <div class="archive-ledger"><span>01</span><code>source_url</code><b>kept</b><span>02</span><code>post_body</code><b>saved</b><span>03</span><code>original_media</code><b>local</b></div>
+    </div>
+  </section>
+
+  <section id="outcome" class="section split-section">
+    <div><p class="eyebrow" data-i18n="demo_label">OUTCOME DEMO</p><h2 data-i18n="demo_title">仕組みではなく、保存結果を確認する</h2><p data-i18n="demo_desc">入力、操作、Vaultに生成される結果を確認できる実演動画を準備しています。内部の抽出方式は公開しません。</p><a href="/blog/what-obwrite-saves/" class="text-link" data-i18n="demo_article">保存される内容を記事で確認</a></div>
+    <div class="demo-placeholder" role="img" aria-label="実演動画は準備中です"><span>DEMO / PENDING</span><strong data-i18n="demo_pending">実演動画 準備中</strong><p data-i18n="demo_honesty">未提供の動画を再生可能であるかのようには表示していません。</p></div>
+  </section>
+
+  <section class="section"><div class="section-heading"><p class="eyebrow">BEFORE / AFTER</p><h2 data-i18n="before_title">リンクだけでなく、文脈とファイルを残す</h2></div><div class="comparison-grid"><article><span>BEFORE</span><h3 data-i18n="before_heading">ブックマークとダウンロード</h3><ul><li data-i18n="before_1">ページ削除後はリンク先を参照できない</li><li data-i18n="before_2">画像と元の投稿が離れる</li><li data-i18n="before_3">保存先を手作業で整理する</li></ul></article><article class="comparison-after"><span>AFTER</span><h3 data-i18n="after_heading">Obsidian Vault</h3><ul><li data-i18n="after_1">Markdownに元URLと内容を記録</li><li data-i18n="after_2">取得した画像・動画をローカル保存</li><li data-i18n="after_3">ノートとメディアを同じVaultで管理</li></ul></article></div></section>
+
+  <section class="section" id="platforms"><div class="section-heading"><p class="eyebrow">SUPPORT MATRIX</p><h2 data-i18n="platform_title">現在の対応範囲</h2></div><div class="support-columns"><section class="support-group" data-support-group="stable" aria-labelledby="stable-platforms"><header class="support-group-head"><div><span class="support stable">STABLE</span><h3 id="stable-platforms" data-i18n="stable_sites">対応サイト</h3></div><span class="support-count" aria-hidden="true">04</span></header><div class="platform-list"><article class="platform-card" data-support="stable"><span class="platform-icon"><img src="/assets/platforms/yahoo-fleamarket.png" width="56" height="56" alt="" loading="lazy" decoding="async"></span><div><h4 data-i18n="platform_yahoo">Yahoo!フリマ</h4><ul class="capability-list"><li data-i18n="cap_image">画像</li></ul></div></article><article class="platform-card" data-support="stable"><span class="platform-icon"><img src="/assets/platforms/mercari.jpg" width="56" height="56" alt="" loading="lazy" decoding="async"></span><div><h4 data-i18n="platform_mercari">メルカリ</h4><ul class="capability-list"><li data-i18n="cap_image">画像</li></ul></div></article><article class="platform-card" data-support="stable"><span class="platform-icon"><img src="/assets/platforms/rakuma.png" width="56" height="56" alt="" loading="lazy" decoding="async"></span><div><h4 data-i18n="platform_rakuma">楽天ラクマ</h4><ul class="capability-list"><li data-i18n="cap_image">画像</li></ul></div></article><article class="platform-card" data-support="stable"><span class="platform-icon"><img src="/assets/platforms/x.jpg" width="56" height="56" alt="" loading="lazy" decoding="async"></span><div><h4>X.com</h4><ul class="capability-list"><li data-i18n="cap_post">ポスト</li><li data-i18n="cap_image">画像</li><li data-i18n="cap_video">動画</li></ul></div></article></div></section><section class="support-group" data-support-group="experimental" aria-labelledby="experimental-platforms"><header class="support-group-head"><div><span class="support beta">EXPERIMENTAL</span><h3 id="experimental-platforms" data-i18n="experimental_sites">実験サイト</h3></div><span class="support-count" aria-hidden="true">02</span></header><div class="platform-list"><article class="platform-card" data-support="experimental"><span class="platform-icon"><img src="/assets/platforms/reddit.svg" width="56" height="56" alt="" loading="lazy" decoding="async"></span><div><h4>Reddit</h4><ul class="capability-list"><li data-i18n="cap_image">画像</li><li class="constraint" data-i18n="cap_structure">構造依存</li></ul></div></article><article class="platform-card" data-support="experimental"><span class="platform-icon"><img src="/assets/platforms/civitai.svg" width="56" height="56" alt="" loading="lazy" decoding="async"></span><div><h4>Civitai</h4><ul class="capability-list"><li data-i18n="cap_image">画像</li><li data-i18n="cap_video">動画</li><li class="constraint" data-i18n="cap_format">形式制限</li></ul></div></article></div></section></div></section>
+
+  <section class="section privacy-panel"><div><p class="eyebrow">LOCAL-FIRST</p><h2 data-i18n="privacy_title">保存処理はPC内で完結</h2></div><div><p data-i18n="privacy_desc">テレメトリや利用統計は収集しません。通信は、ユーザーが閲覧する対象ページへのアクセスと、明示的に指示した画像・動画の取得に限定されます。</p><p class="fine-print" data-i18n="privacy_note">Obwriteは各サービスの公式製品ではありません。閲覧可能な単一ページを私的使用の範囲で保存するブラウジング支援ツールです。</p></div></section>
+
+  <section class="section" id="blog"><div class="section-heading row-heading"><div><p class="eyebrow">ARCHIVE LOG</p><h2 data-i18n="blog_title">Obwrite Blog</h2><p data-i18n="blog_desc">動作条件、保存結果、設定、更新履歴を公開します。</p></div><a class="text-link" href="/blog/" data-i18n="blog_all">すべての記事</a></div><div class="bento-grid">{{LATEST_POSTS}}</div></section>
+
+  <section id="pricing" class="section purchase-panel" aria-labelledby="purchase-title"><header class="purchase-head"><p class="eyebrow">EARLY ACCESS</p><h2 id="purchase-title">Obwrite Personal</h2></header><div class="purchase-grid"><div id="requirements" class="purchase-requirements"><p class="purchase-kicker">REQUIREMENTS</p><h3 data-i18n="requirements_title">購入前に確認</h3><dl class="purchase-facts"><div><dt>OS</dt><dd>Windows 10 / 11（64-bit）</dd></div><div><dt data-i18n="browser">ブラウザ</dt><dd data-i18n="chrome_latest">Google Chrome 最新版</dd></div><div><dt data-i18n="destination">保存先</dt><dd>Obsidian local Vault</dd></div><div><dt data-i18n="delivery">提供物</dt><dd>Obwrite.exe / Startup manual</dd></div></dl><p class="purchase-warning" data-i18n="requirements_desc">macOS、Linux、スマートフォンは公式サポート対象外です。</p></div><div class="purchase-offer"><div class="purchase-price"><span class="price" data-price>¥2,800</span><span data-i18n="one_time">買い切り</span></div><p data-i18n="pricing_desc">Early Accessの買い切りダウンロード商品です。UIや補助機能は今後変更される場合があります。</p><a class="button" data-store-link href="https://booth.pm/ja/items/8774082" data-i18n="pricing_buy">BOOTHの商品説明を確認</a></div></div></section>
+</main>
+<footer class="site-footer"><div><strong>Obwrite</strong><p data-i18n="footer_tagline">Webの情報をローカルObsidian Vaultへ。</p></div><nav aria-label="フッターナビゲーション"><a href="/blog/" data-i18n="nav_blog">ブログ</a><a href="mailto:obwrite@gmail.com" data-i18n="support">サポート</a><a href="https://x.com/Obwrite">Official X</a></nav><p>© 2026 Obwrite Official</p></footer>
+</body>
+</html>

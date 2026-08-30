@@ -25,7 +25,7 @@ export async function renderSite(config, posts) {
     readFile(path.join(config.sourceRoot, "assets", "platforms.css"), "utf8"),
     readFile(path.join(config.sourceRoot, "assets", "script.js"), "utf8")
   ]);
-  const latest = posts.slice(0, 5).map((post) => postCard(post)).join("\n");
+  const latest = posts.slice(0, 5).map((post) => postCard(post, "", "h4")).join("\n");
   const documents = new Map([
     ["index.html", lpTemplate.replace("{{LATEST_POSTS}}", latest)],
     ["style.css", style],

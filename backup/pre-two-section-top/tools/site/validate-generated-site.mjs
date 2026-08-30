@@ -23,29 +23,18 @@ for (const relativePath of htmlPaths) {
 }
 
 const index = await readFile(path.join(config.siteRoot, "index.html"), "utf8");
-const main = index.match(/<main id="main">([\s\S]*?)<\/main>/)?.[1];
-if (!main) throw new Error("index.html: missing main content");
-const directSections = [];
-let sectionDepth = 0;
-for (const [tag] of main.matchAll(/<\/?section\b[^>]*>/g)) {
-  if (tag.startsWith("</")) sectionDepth--;
-  else {
-    if (sectionDepth === 0) directSections.push(tag.match(/\bid="([^"]+)"/)?.[1] ?? "");
-    sectionDepth++;
-  }
+const purchasePanel = index.match(/<section id="pricing" class="section purchase-panel"[\s\S]*?<\/section>/)?.[0];
+if (!purchasePanel) throw new Error("index.html: missing integrated purchase panel");
+if (!purchasePanel.includes('id="requirements"')) throw new Error("index.html: requirements must be inside the purchase panel");
+if (/<section id="requirements" class="section requirements">/.test(index)) throw new Error("index.html: standalone requirements section must not be rendered");
+for (const expected of ["Windows 10 / 11（64-bit）", "Google Chrome 最新版", "Obsidian local Vault", "Obwrite.exe / Startup manual", "macOS、Linux、スマートフォンは公式サポート対象外です。", "¥2,800", "BOOTHの商品説明を確認"]) {
+  if (!purchasePanel.includes(expected)) throw new Error(`index.html: purchase panel missing ${expected}`);
 }
-if (sectionDepth !== 0) throw new Error("index.html: unbalanced section structure");
-if (directSections.join(",") !== "blog,platforms") throw new Error(`index.html: expected only blog and platforms sections, found ${directSections.join(",")}`);
-if (/<h[1-3]\b/.test(main)) throw new Error("index.html: heading levels 1 through 3 are forbidden on the top page");
-if (!main.includes('<h4 data-i18n="blog_title">')) throw new Error("index.html: missing blog h4 heading");
-for (const removed of ['class="hero"', 'id="outcome"', 'class="section privacy-panel"', 'id="pricing"', 'id="requirements"', "purchase-panel"]) {
-  if (main.includes(removed)) throw new Error(`index.html: purged component remains: ${removed}`);
-}
+if (purchasePanel.includes("<details")) throw new Error("index.html: purchase requirements must remain visible");
 const landingBoothLinks = index.match(/https:\/\/booth\.pm\/ja\/items\/8774082/g)?.length ?? 0;
-if (landingBoothLinks !== 1) throw new Error(`index.html: expected one header BOOTH link, found ${landingBoothLinks}`);
-if ((main.match(/class="post-card/g) ?? []).length !== 5) throw new Error("index.html: expected five latest blog cards");
-for (const expected of ["楽天ラクマ", "EXPERIMENTAL"]) {
-  if (!index.includes(expected)) throw new Error(`index.html: missing support value ${expected}`);
+if (landingBoothLinks !== 3) throw new Error(`index.html: expected three decision-stage BOOTH links, found ${landingBoothLinks}`);
+for (const expected of ["OBWRITE 0.8.0", "¥2,800", "楽天ラクマ", "EXPERIMENTAL", "Windows 10 / 11（64-bit）"]) {
+  if (!index.includes(expected)) throw new Error(`index.html: missing SSOT value ${expected}`);
 }
 const platformCards = [...index.matchAll(/<article class="platform-card" data-support="(stable|experimental)">([\s\S]*?)<\/article>/g)];
 if (platformCards.length !== 6) throw new Error(`index.html: expected 6 platform cards, found ${platformCards.length}`);
