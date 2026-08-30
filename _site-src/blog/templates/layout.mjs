@@ -23,6 +23,7 @@ export function head({ title, description, canonical, type = "website", json = n
   <link rel="stylesheet" href="${canonical.endsWith('/blog/') ? '../style.css?v=20260830' : canonical.includes('/blog/') ? '../../style.css?v=20260830' : 'style.css?v=20260830'}">
   ${json ? `<script type="application/ld+json">${jsonLd(json)}</script>` : ""}
   <script src="${canonical.endsWith('/blog/') ? '../script.js?v=20260830' : canonical.includes('/blog/') ? '../../script.js?v=20260830' : 'script.js?v=20260830'}" defer></script>
+  <script src="https://gumroad.com/js/gumroad.js" defer></script>
 </head>`;
 }
 
@@ -35,7 +36,7 @@ export function siteHeader(prefix = "") {
   </nav>
   <div class="header-actions">
     <a class="button button-small" href="https://booth.pm/ja/items/8774082">BOOTH</a>
-    <a class="button button-small button-secondary" href="https://obwrite.gumroad.com/l/app">Gumroad</a>
+    <a class="gumroad-button" href="https://obwrite.gumroad.com/l/app"></a>
   </div>
 </header>`;
 }
@@ -44,5 +45,11 @@ export function siteFooter(prefix = "") {
   return `<footer class="site-footer">
   <p class="site-footer-brand"><strong>Obwrite</strong> <span class="footer-copy">© 2026 Obwrite Official</span></p>
   <nav aria-label="フッターナビゲーション"><a href="${prefix}/blog/">ブログ</a><a href="mailto:obwrite@gmail.com">サポート</a><a href="https://x.com/Obwrite">公式X</a></nav>
-</footer>`;
+</footer>
+<div id="gumroad-modal" class="gumroad-modal" hidden aria-hidden="true">
+  <div class="gumroad-modal-dialog" role="dialog" aria-modal="true" aria-label="Gumroad Checkout">
+    <button type="button" class="gumroad-modal-close" aria-label="閉じる">✕</button>
+    <iframe src="about:blank" title="Gumroad Checkout" allow="payment"></iframe>
+  </div>
+</div>`;
 }

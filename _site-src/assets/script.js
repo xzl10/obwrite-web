@@ -30,6 +30,43 @@ function applyLanguage(lang) {
   localStorage.setItem("obwrite_lang", lang);
 }
 
+function initGumroadModal() {
+  const triggers = document.querySelectorAll('.gumroad-button, [data-gumroad-overlay-checkout]');
+  const modal = document.getElementById('gumroad-modal');
+  if (!modal || !triggers.length) return;
+  const iframe = modal.querySelector('iframe');
+  const closeBtn = modal.querySelector('.gumroad-modal-close');
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    if (iframe && iframe.getAttribute('src') === 'about:blank') {
+      iframe.src = "https://obwrite.gumroad.com/l/app";
+    }
+    modal.classList.add('is-open');
+    modal.removeAttribute('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      if (!modal.classList.contains('is-open')) modal.setAttribute('hidden', '');
+    }, 200);
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach((btn) => btn.addEventListener('click', openModal));
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll("[data-lang]");
   if (buttons.length) {
@@ -38,5 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applyLanguage(initial);
     buttons.forEach((button) => button.addEventListener("click", () => applyLanguage(button.dataset.lang)));
   }
+  initGumroadModal();
   if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("view-transitions");
 });

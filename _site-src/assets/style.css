@@ -72,3 +72,10 @@ main>.section:first-child{border-top:0}
 @media(max-width:620px){.site-header{min-height:60px;gap:.6rem}.brand{font-size:1.02rem}.header-actions{gap:.45rem}.language-switch button{padding:.25rem .45rem;font-size:.78rem}.row-heading{align-items:flex-start;flex-direction:column}.bento-grid{grid-template-columns:1fr}.section{padding:4rem 0}.site-footer{grid-template-columns:1fr}.site-footer nav{flex-wrap:wrap}.article-header h1{font-size:2.7rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 @supports(view-transition-name:none){.view-transitions .post-card{view-transition-name:match-element}}
+.gumroad-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:1.5rem;background:rgba(10,13,20,.78);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .2s ease}
+.gumroad-modal.is-open{opacity:1;pointer-events:auto}
+.gumroad-modal-dialog{position:relative;width:min(96vw,980px);height:min(94vh,900px);background:#ffffff;border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 90px rgba(0,0,0,.7);overflow:hidden;transform:translateY(16px) scale(.98);transition:transform .2s ease}
+.gumroad-modal.is-open .gumroad-modal-dialog{transform:translateY(0) scale(1)}
+.gumroad-modal-close{position:absolute;top:12px;right:14px;z-index:20;width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,0,0,.15);background:rgba(255,255,255,.9);color:#111;font-size:1.1rem;font-weight:700;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:background .15s,transform .15s}
+.gumroad-modal-close:hover{background:#000;color:#fff;transform:scale(1.05)}
+.gumroad-modal iframe{width:100%;height:100%;border:0;display:block;background:#ffffff}
