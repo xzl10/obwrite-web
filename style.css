@@ -38,9 +38,11 @@ main>.section:first-child{border-top:0}
 .post-card h3,.post-card h4{font-size:1.25rem;line-height:1.25;margin:.9rem 0}
 .post-card p{color:var(--muted);margin:0 0 1rem}
 .post-card time{margin-top:auto;color:var(--muted);font:400 .75rem ui-monospace,monospace}
-.site-footer{border-top:1px solid var(--line);padding:3rem 0;display:grid;grid-template-columns:1fr auto;gap:1rem;color:var(--muted)}
-.site-footer nav{display:flex;gap:1rem}
-.site-footer>p{grid-column:1/-1;font-size:.78rem}
+.site-footer{border-top:1px solid var(--line);padding:2.5rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem;color:var(--muted)}
+.site-footer-brand{margin:0;display:flex;align-items:center;gap:.75rem;font-size:.9rem}
+.site-footer-brand strong{color:var(--text)}
+.footer-copy{font-size:.82rem;color:var(--muted)}
+.site-footer nav{display:flex;gap:1.4rem;align-items:center}
 .page-shell{padding:5rem 0}
 .blog-hero{max-width:760px;margin-bottom:3rem}
 .article-shell{max-width:880px;padding:3rem 0 6rem}
