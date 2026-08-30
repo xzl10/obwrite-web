@@ -1,4 +1,4 @@
-:root{--ink:#080b12;--panel:#101521;--panel-2:#151b2a;--line:#293246;--text:#f1f4fa;--muted:#a4afc2;--violet:#8b78ff;--violet-soft:#c7beff;--amber:#e4a853;--green:#6bc7a4;--max:1180px;--radius:10px;--shadow:0 24px 80px rgba(0,0,0,.28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}
+:root{--ink:#141824;--panel:#1e2436;--panel-2:#262d42;--line:#384259;--text:#f3f6fc;--muted:#a8b5cc;--violet:#8b78ff;--violet-soft:#c7beff;--amber:#e4a853;--green:#6bc7a4;--max:1180px;--radius:10px;--shadow:0 24px 80px rgba(0,0,0,.35);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
 html{background:var(--ink);color:var(--text);scroll-behavior:smooth}
 body{margin:0;min-width:320px;background:radial-gradient(circle at 80% 5%,rgba(139,120,255,.11),transparent 34rem),var(--ink);line-height:1.65}
@@ -15,9 +15,11 @@ button,a{font:inherit}
 .language-switch{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
 .language-switch button{border:0;background:transparent;color:var(--muted);padding:.35rem .55rem;border-radius:999px;cursor:pointer}
 .language-switch button[aria-pressed="true"]{background:var(--panel-2);color:var(--text)}
-.button{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;background:var(--violet);color:#080810;font-weight:760;padding:.82rem 1.1rem;border:1px solid transparent;border-radius:7px}
+.button{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;background:var(--violet);color:#080810;font-weight:760;padding:.82rem 1.1rem;border:1px solid transparent;border-radius:7px;transition:background .15s,border-color .15s,color .15s}
 .button:hover{background:var(--violet-soft)}
-.button-small{padding:.55rem .8rem;font-size:.9rem}
+.button-secondary{background:var(--panel-2);color:var(--text);border:1px solid var(--line)}
+.button-secondary:hover{background:var(--panel);border-color:var(--violet-soft);color:var(--text)}
+.button-small{padding:.48rem .8rem;font-size:.88rem;white-space:nowrap}
 .text-link{color:var(--violet-soft);text-underline-offset:4px}
 .section,.page-shell,.article-shell,.site-footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
 .eyebrow{font-family:ui-monospace,"Cascadia Code",monospace;color:var(--violet-soft);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}

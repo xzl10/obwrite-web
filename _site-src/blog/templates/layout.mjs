@@ -33,7 +33,10 @@ export function siteHeader(prefix = "") {
   <nav aria-label="メインナビゲーション">
     <a href="${prefix}/blog/">ブログ</a>
   </nav>
-  <a class="button button-small" href="https://booth.pm/ja/items/8774082">BOOTHで購入</a>
+  <div class="header-actions">
+    <a class="button button-small" href="https://booth.pm/ja/items/8774082">BOOTH</a>
+    <a class="button button-small button-secondary" href="https://obwrite.gumroad.com/l/app">Gumroad</a>
+  </div>
 </header>`;
 }
 

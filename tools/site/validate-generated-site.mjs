@@ -35,16 +35,16 @@ for (const [tag] of main.matchAll(/<\/?section\b[^>]*>/g)) {
   }
 }
 if (sectionDepth !== 0) throw new Error("index.html: unbalanced section structure");
-if (directSections.join(",") !== "blog,platforms") throw new Error(`index.html: expected only blog and platforms sections, found ${directSections.join(",")}`);
+if (directSections.join(",") !== "blog,platforms,requirements") throw new Error(`index.html: expected blog, platforms, and requirements sections, found ${directSections.join(",")}`);
 if (/<h[1-3]\b/.test(main)) throw new Error("index.html: heading levels 1 through 3 are forbidden on the top page");
 if (!main.includes('<h4 data-i18n="blog_title">')) throw new Error("index.html: missing blog h4 heading");
-for (const removed of ['class="hero"', 'id="outcome"', 'class="section privacy-panel"', 'id="pricing"', 'id="requirements"', "purchase-panel"]) {
+for (const removed of ['class="hero"', 'id="outcome"', 'class="section privacy-panel"', 'id="pricing"', "purchase-offer"]) {
   if (main.includes(removed)) throw new Error(`index.html: purged component remains: ${removed}`);
 }
 const landingBoothLinks = index.match(/https:\/\/booth\.pm\/ja\/items\/8774082/g)?.length ?? 0;
 if (landingBoothLinks !== 1) throw new Error(`index.html: expected one header BOOTH link, found ${landingBoothLinks}`);
 if ((main.match(/class="post-card/g) ?? []).length !== 5) throw new Error("index.html: expected five latest blog cards");
-for (const expected of ["楽天ラクマ", "BETA"]) {
+for (const expected of ["楽天ラクマ", "BETA", "Windows 10 / 11（64-bit）", "Google Chrome 最新版", "Obsidian"]) {
   if (!index.includes(expected)) throw new Error(`index.html: missing support value ${expected}`);
 }
 const platformCards = [...index.matchAll(/<article class="platform-card" data-support="(stable|experimental)">([\s\S]*?)<\/article>/g)];
@@ -56,6 +56,8 @@ if ((index.match(/data-support-group="(stable|experimental)"/g) ?? []).length !=
 for (const capability of ["ポスト", "画像", "動画"]) {
   if (!index.includes(`>${capability}</li>`)) throw new Error(`index.html: missing capability ${capability}`);
 }
+if (!index.includes("/assets/obwrite-square.png")) throw new Error("index.html: missing obwrite-square.png asset");
+await access(path.join(config.siteRoot, "assets", "obwrite-square.png"));
 for (const asset of ["x.jpg", "mercari.jpg", "yahoo-fleamarket.png", "rakuma.png", "reddit.svg", "civitai.svg"]) {
   if (!index.includes(`/assets/platforms/${asset}`)) throw new Error(`index.html: missing platform asset ${asset}`);
   await access(path.join(config.siteRoot, "assets", "platforms", asset));
