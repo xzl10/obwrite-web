@@ -4,7 +4,7 @@ const languages = {
     description: "Obwriteの対応サイト、保存対象、実験的対応、および最新の更新情報。",
     store: "https://booth.pm/ja/items/8774082",
     text: {
-      nav_blog: "ブログ", nav_buy: "BOOTHで購入", platform_title: "現在の対応範囲", stable_sites: "対応サイト", experimental_sites: "実験サイト", platform_yahoo: "Yahoo!フリマ", platform_mercari: "メルカリ", platform_rakuma: "楽天ラクマ", cap_post: "ポスト", cap_image: "画像", cap_video: "動画", cap_structure: "構造依存", cap_format: "形式制限",
+      nav_blog: "ブログ", nav_buy: "BOOTHで購入", platform_title: "現在の対応範囲", stable_sites: "対応サイト", experimental_sites: "実験的対応（β）", platform_yahoo: "Yahoo!フリマ", platform_mercari: "メルカリ", platform_rakuma: "楽天ラクマ", cap_post: "ポスト", cap_image: "画像", cap_video: "動画",
       blog_title: "Obwrite Blog", blog_desc: "動作条件、保存結果、設定、更新履歴を公開します。", blog_all: "すべての記事", support: "サポート"
     }
   },
@@ -13,7 +13,7 @@ const languages = {
     description: "Supported sites, saved content types, experimental support, and product updates for Obwrite.",
     store: "https://obwrite.gumroad.com/l/app",
     text: {
-      nav_blog: "Blog (JP)", nav_buy: "Buy on Gumroad", platform_title: "Current support scope", stable_sites: "Supported sites", experimental_sites: "Experimental sites", platform_yahoo: "Yahoo! Flea Market", platform_mercari: "Mercari", platform_rakuma: "Rakuten Rakuma", cap_post: "Post", cap_image: "Image", cap_video: "Video", cap_structure: "Page-dependent", cap_format: "Format-limited",
+      nav_blog: "Blog (JP)", nav_buy: "Buy on Gumroad", platform_title: "Current support scope", stable_sites: "Supported sites", experimental_sites: "Experimental (Beta)", platform_yahoo: "Yahoo! Flea Market", platform_mercari: "Mercari", platform_rakuma: "Rakuten Rakuma", cap_post: "Post", cap_image: "Image", cap_video: "Video",
       blog_title: "Obwrite Blog", blog_desc: "Requirements, saved outcomes, setup, and release history. Articles are currently in Japanese.", blog_all: "View all articles", support: "Support"
     }
   }

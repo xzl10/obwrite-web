@@ -44,7 +44,7 @@ for (const removed of ['class="hero"', 'id="outcome"', 'class="section privacy-p
 const landingBoothLinks = index.match(/https:\/\/booth\.pm\/ja\/items\/8774082/g)?.length ?? 0;
 if (landingBoothLinks !== 1) throw new Error(`index.html: expected one header BOOTH link, found ${landingBoothLinks}`);
 if ((main.match(/class="post-card/g) ?? []).length !== 5) throw new Error("index.html: expected five latest blog cards");
-for (const expected of ["楽天ラクマ", "EXPERIMENTAL"]) {
+for (const expected of ["楽天ラクマ", "BETA"]) {
   if (!index.includes(expected)) throw new Error(`index.html: missing support value ${expected}`);
 }
 const platformCards = [...index.matchAll(/<article class="platform-card" data-support="(stable|experimental)">([\s\S]*?)<\/article>/g)];
@@ -53,7 +53,7 @@ if (platformCards.filter(([, support]) => support === "stable").length !== 4) th
 if (platformCards.filter(([, support]) => support === "experimental").length !== 2) throw new Error("index.html: expected 2 experimental platform cards");
 if (platformCards.some(([, , card]) => card.includes("<p"))) throw new Error("index.html: platform cards must use capability arrays, not prose");
 if ((index.match(/data-support-group="(stable|experimental)"/g) ?? []).length !== 2) throw new Error("index.html: expected stable and experimental support columns");
-for (const capability of ["ポスト", "画像", "動画", "構造依存", "形式制限"]) {
+for (const capability of ["ポスト", "画像", "動画"]) {
   if (!index.includes(`>${capability}</li>`)) throw new Error(`index.html: missing capability ${capability}`);
 }
 for (const asset of ["x.jpg", "mercari.jpg", "yahoo-fleamarket.png", "rakuma.png", "reddit.svg", "civitai.svg"]) {
