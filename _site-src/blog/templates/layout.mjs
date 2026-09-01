@@ -43,7 +43,7 @@ export function siteHeader(prefix = "") {
     <a href="${prefix}/blog/">ブログ</a>
   </nav>
   <div class="header-actions">
-    <a class="button button-small" href="https://booth.pm/ja/items/8774082">BOOTH</a>
+    <a class="booth-button" href="https://booth.pm/ja/items/8774082" aria-label="BOOTHで購入"><img src="/assets/booth-logo.svg" alt="BOOTH" width="108" height="38"></a>
     <a class="gumroad-button" href="https://obwrite.gumroad.com/l/app"></a>
   </div>
 </header>`;
