@@ -33,7 +33,7 @@ Obwrite v0.8.0 Early Accessを2026年8月28日に公開しました。
 
 - Windows 10 / Windows 11（64-bit）
 - Google Chrome 最新版
-- ローカルの Obsidian Vault
+- Obsidian
 
 macOS、Linux、スマートフォンはサポート対象外です。
 
