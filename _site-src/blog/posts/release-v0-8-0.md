@@ -3,7 +3,7 @@ title: "Obwrite v0.8.0 Early Access リリースノート"
 description: "2026年8月28日に公開したObwrite v0.8.0 Early Accessの対応範囲、提供物、注意事項をまとめます。"
 date: 2026-08-28
 updated: 2026-08-28
-slug: release-0-8-0
+slug: release-v0-8-0
 category: release
 featured: true
 draft: false
